@@ -16,6 +16,20 @@
 		2E68328D26C6308300B7B3F9 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68328C26C6308300B7B3F9 /* RxMoya */; };
 		2E68328F26C6308300B7B3F9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68328E26C6308300B7B3F9 /* Moya */; };
 		2E68329226C63F6400B7B3F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2E68329126C63F6400B7B3F9 /* Kingfisher */; };
+		2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329526C6448000B7B3F9 /* Dictionary+Ext.swift */; };
+		2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329626C6448000B7B3F9 /* String+MD5.swift */; };
+		2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329726C6448000B7B3F9 /* Date+ISO8601.swift */; };
+		2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329D26C6449300B7B3F9 /* Comic.swift */; };
+		2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329E26C6449300B7B3F9 /* UploadResult.swift */; };
+		2E6832A326C6449300B7B3F9 /* CodableResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A026C6449300B7B3F9 /* CodableResponses.swift */; };
+		2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */; };
+		2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A726C6473400B7B3F9 /* Marvel.swift */; };
+		2E6832A926C64A6400B7B3F9 /* CoolStoryregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E68329326C6447100B7B3F9 /* CoolStoryregular.ttf */; };
+		2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B226C67B6800B7B3F9 /* ResultCode.swift */; };
+		2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */; };
+		2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */; };
+		2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */; };
+		2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +39,21 @@
 		2E68327C26C62F3300B7B3F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E68327F26C62F3300B7B3F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E68328126C62F3300B7B3F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E68329326C6447100B7B3F9 /* CoolStoryregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoolStoryregular.ttf; sourceTree = "<group>"; };
+		2E68329526C6448000B7B3F9 /* Dictionary+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
+		2E68329626C6448000B7B3F9 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		2E68329726C6448000B7B3F9 /* Date+ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
+		2E68329B26C6448B00B7B3F9 /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
+		2E68329D26C6449300B7B3F9 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		2E68329E26C6449300B7B3F9 /* UploadResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadResult.swift; sourceTree = "<group>"; };
+		2E6832A026C6449300B7B3F9 /* CodableResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponses.swift; sourceTree = "<group>"; };
+		2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
+		2E6832A726C6473400B7B3F9 /* Marvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel.swift; sourceTree = "<group>"; };
+		2E6832B226C67B6800B7B3F9 /* ResultCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCode.swift; sourceTree = "<group>"; };
+		2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
+		2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUserContentAPI.swift; sourceTree = "<group>"; };
+		2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +93,11 @@
 			children = (
 				2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */,
 				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
-				2E68327C26C62F3300B7B3F9 /* Assets.xcassets */,
-				2E68328126C62F3300B7B3F9 /* Info.plist */,
+				2E6832A426C644A000B7B3F9 /* Common */,
+				2E6832B626C67C8C00B7B3F9 /* Model */,
+				2E68329426C6448000B7B3F9 /* Helpers */,
+				2E68329F26C6449300B7B3F9 /* Network */,
+				2E68329C26C6449300B7B3F9 /* Models */,
 				2E68327E26C62F3300B7B3F9 /* Preview Content */,
 			);
 			path = MoyaCombineDemo;
@@ -77,6 +109,58 @@
 				2E68327F26C62F3300B7B3F9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2E68329426C6448000B7B3F9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */,
+				2E6832B226C67B6800B7B3F9 /* ResultCode.swift */,
+				2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */,
+				2E68329526C6448000B7B3F9 /* Dictionary+Ext.swift */,
+				2E68329626C6448000B7B3F9 /* String+MD5.swift */,
+				2E68329726C6448000B7B3F9 /* Date+ISO8601.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2E68329C26C6449300B7B3F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2E68329D26C6449300B7B3F9 /* Comic.swift */,
+				2E68329E26C6449300B7B3F9 /* UploadResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2E68329F26C6449300B7B3F9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */,
+				2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */,
+				2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */,
+				2E6832A026C6449300B7B3F9 /* CodableResponses.swift */,
+				2E6832A726C6473400B7B3F9 /* Marvel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2E6832A426C644A000B7B3F9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2E68328126C62F3300B7B3F9 /* Info.plist */,
+				2E68329B26C6448B00B7B3F9 /* Bridging.h */,
+				2E68327C26C62F3300B7B3F9 /* Assets.xcassets */,
+				2E68329326C6447100B7B3F9 /* CoolStoryregular.ttf */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2E6832B626C67C8C00B7B3F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6832A926C64A6400B7B3F9 /* CoolStoryregular.ttf in Resources */,
 				2E68328026C62F3300B7B3F9 /* Preview Assets.xcassets in Resources */,
 				2E68327D26C62F3300B7B3F9 /* Assets.xcassets in Resources */,
 			);
@@ -159,8 +244,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */,
+				2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */,
 				2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */,
+				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
+				2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */,
+				2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */,
+				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
+				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
+				2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */,
 				2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */,
+				2E6832A326C6449300B7B3F9 /* CodableResponses.swift in Sources */,
+				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
+				2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */,
+				2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */,
+				2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +390,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoyaCombineDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = UV36497CVB;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MoyaCombineDemo/Info.plist;
+				INFOPLIST_FILE = MoyaCombineDemo/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +398,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.epiens.MoyaCombineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MoyaCombineDemo/Common/Bridging.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,7 +413,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoyaCombineDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = UV36497CVB;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MoyaCombineDemo/Info.plist;
+				INFOPLIST_FILE = MoyaCombineDemo/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -322,6 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.epiens.MoyaCombineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MoyaCombineDemo/Common/Bridging.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -12,6 +12,14 @@ struct MoyaCombineApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear{
+//                    print(FileManager.documentURL ?? "")
+//                    for fontFamily in UIFont.familyNames {
+//                        for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+//                            print(fontName)
+//                        }
+//                    }
+                }
         }
     }
 }
