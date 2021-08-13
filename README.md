@@ -2,7 +2,7 @@
 
 Moya 15.0.0-alpha.1,
 Kingfisher,
-SWiftUI
+SwiftUI
 
 ## https://www.raywenderlich.com/5121-moya-tutorial-for-ios-getting-started
 
