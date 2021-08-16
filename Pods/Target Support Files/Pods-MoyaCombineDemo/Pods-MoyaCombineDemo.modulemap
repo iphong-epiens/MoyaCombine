@@ -1,0 +1,6 @@
+framework module Pods_MoyaCombineDemo {
+  umbrella header "Pods-MoyaCombineDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

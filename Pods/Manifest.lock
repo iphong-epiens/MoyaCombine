@@ -1,0 +1,63 @@
+PODS:
+  - BlueCryptor (1.0.32)
+  - BlueECC (1.2.5)
+  - BlueRSA (1.0.34)
+  - CryptoSwift (1.4.1)
+  - JWTDecode (2.6.1)
+  - KeychainAccess (4.2.2)
+  - KituraContracts (1.2.1):
+    - LoggerAPI (~> 1.7)
+  - LoggerAPI (1.9.200):
+    - Logging (~> 1.1)
+  - Logging (1.4.0)
+  - PKHUD (5.3.0)
+  - SwiftJWT (3.6.200):
+    - BlueCryptor (~> 1.0)
+    - BlueECC (~> 1.1)
+    - BlueRSA (~> 1.0)
+    - KituraContracts (~> 1.2)
+    - LoggerAPI (~> 1.7)
+  - SwiftyRSA (1.7.0):
+    - SwiftyRSA/ObjC (= 1.7.0)
+  - SwiftyRSA/ObjC (1.7.0)
+
+DEPENDENCIES:
+  - CryptoSwift
+  - JWTDecode
+  - KeychainAccess
+  - PKHUD
+  - SwiftJWT
+  - SwiftyRSA
+
+SPEC REPOS:
+  trunk:
+    - BlueCryptor
+    - BlueECC
+    - BlueRSA
+    - CryptoSwift
+    - JWTDecode
+    - KeychainAccess
+    - KituraContracts
+    - LoggerAPI
+    - Logging
+    - PKHUD
+    - SwiftJWT
+    - SwiftyRSA
+
+SPEC CHECKSUMS:
+  BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
+  BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
+  BlueRSA: 6f9776d62d9773502415a7db3bcbb2bbb3f71fc3
+  CryptoSwift: 0bc800a7e6a24c4fc9ebeab97d44b0d5f73a78bd
+  JWTDecode: 5e6d4b49c2b098f994cf7617401c195c8c06300b
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
+  LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
+  SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
+
+PODFILE CHECKSUM: cd13094f63bcaf4d97446e21c6bcdc0079666e57
+
+COCOAPODS: 1.10.1
