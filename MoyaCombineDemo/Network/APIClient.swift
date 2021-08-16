@@ -121,13 +121,75 @@ final public class API: ObservableObject {
 }
 
 extension API.NetworkClient {
-    func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, Moya.MoyaError> {
+    func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, MoyaError> {
 
       let target = MultiTarget(request)
 
         return self.provider.requestPublisher(target)
+//            .tryMap{
+//                if self.hasValidRefreshToken {
+//                    throw SwsApiError.refreshTokenError
+//                }
+//                else if let statusCode = $0.response?.statusCode, statusCode == 200 {
+//                    throw SwsApiError.refreshTokenError
+//                }
+//                return $0
+//            }
             .receive(on: DispatchQueue.global(qos: .background))
+            .handleEvents(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error as SwsApiError):
+                    print(">>> SwsApiError", error)
+                    
+                    
+                default:
+                    break
+                }
+            })
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
+    }
+    
+    func getPublicKey() {
+
+        _ = self.request(ReqAPI.Auth.publickey())
+            .sink(receiveCompletion: {
+                print($0)
+            }, receiveValue: {
+                print($0)
+            })
+         
+       
+        
+//      return API.shared.request(ReqAPI.Auth.publickey())
+//        .print()
+//        .receive(on: DispatchQueue.global(qos: .background))
+////        .handleEvents(receiveOutput: { ouput in
+////            print(ouput)
+////        }, receiveCompletion: { completion in
+////            print(completion)
+////        })
+//        .eraseToAnyPublisher()
+//        .subscribe(onSuccess: { response in
+//          do {
+//            let json = try response.mapJSON()
+//            if let object = json as? [String: Any],
+//               let resultData = object["jsonData"],
+//               let jsonData = resultData as? [String: Any],
+//               let res = jsonData["res"]  as? [String: Any],
+//               let publicKey = res["publicKey"] as? String {
+//              //save public key
+//              try KeyChain.set(publicKey, key: "publicKey")
+//              print("new publicKey:", publicKey)
+//              single(.success(response))
+//            }
+//          } catch let error {
+//            print(error.localizedDescription)
+//            single(.error(error))
+//          }
+//        }) { error in
+//          single(.error(error))
+//        }
+
     }
 }

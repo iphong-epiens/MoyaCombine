@@ -9,6 +9,10 @@ import SwiftUI
 import Combine
 import CombineMoya
 import Moya
+import KeychainAccess
+import CryptoSwift
+import JWTDecode
+import SwiftyRSA
 
 struct ContentView: View {
     struct Response<T> {
@@ -58,27 +62,59 @@ struct ContentView: View {
     let provider = MoyaProvider<Marvel>()
     
     init() {
-        cancellable = provider.requestPublisher(.comics)
-            .map(MarvelResponse<Comic>.self)
-            .sink(receiveCompletion: { completion in
-//                print ("completion: \(completion)")
-                switch completion {
-                case .finished:
-                    print(">>> finished. success!")
-                    
-                case .failure(let error as Moya.MoyaError?):
-                    
-                    if let statusCode = error?.response?.statusCode,
-                       let localizedDescription = error?.localizedDescription {
-                        print(">>> fail statusCode: \(statusCode), localizedDescription: \(localizedDescription)")
-                       let resultCode =  HTTPStatusCode(rawValue: statusCode)!
-                       print(resultCode)
-                    }
+        cancellable = API.shared.request(ReqAPI.Auth.publickey())
+            .sink(receiveCompletion: {
+                print($0)
+            }, receiveValue: { response in
+                do {
+                  let json = try response.mapJSON()
+                  if let object = json as? [String: Any],
+                     let resultData = object["jsonData"],
+                     let jsonData = resultData as? [String: Any],
+                     let res = jsonData["res"]  as? [String: Any],
+                     let publicKey = res["publicKey"] as? String {
+                    //save public key
+                   try KeyChain.set(publicKey, key: "publicKey")
+                    print("new publicKey:", publicKey)
+                    //single(.success(response))
+                  }
+                } catch let error {
+                  print(error.localizedDescription)
+                 // single(.error(error))
                 }
-                
-            },receiveValue: { message in
-                print(">>> message", message.data.results)
             })
+   //     API.shared.getPublicKey()
+      
+//        cancellable = API.shared.request(Marvel.comics)
+//           // .map(MarvelResponse<Comic>.self)
+//            .sink(receiveCompletion: { completion in
+//                print(">>> receiveCompletion",completion)
+//            }, receiveValue: { _ in
+//                //print(">>> receiveValue",$0)
+//            })
+            
+        
+//        cancellable = provider.requestPublisher(.comics)
+//            .map(MarvelResponse<Comic>.self)
+//            .sink(receiveCompletion: { completion in
+////                print ("completion: \(completion)")
+//                switch completion {
+//                case .finished:
+//                    print(">>> finished. success!")
+//
+//                case .failure(let error as Moya.MoyaError?):
+//
+//                    if let statusCode = error?.response?.statusCode,
+//                       let localizedDescription = error?.localizedDescription {
+//                        print(">>> fail statusCode: \(statusCode), localizedDescription: \(localizedDescription)")
+//                       let resultCode =  HTTPStatusCode(rawValue: statusCode)!
+//                       print(resultCode)
+//                    }
+//                }
+//
+//            },receiveValue: { message in
+//                print(">>> message", message.data.results)
+//            })
     }
     
     var body: some View {

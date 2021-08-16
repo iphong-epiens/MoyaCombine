@@ -27,10 +27,13 @@
 		2E6832A926C64A6400B7B3F9 /* CoolStoryregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E68329326C6447100B7B3F9 /* CoolStoryregular.ttf */; };
 		2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B226C67B6800B7B3F9 /* ResultCode.swift */; };
 		2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */; };
-		2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */; };
-		2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */; };
-		2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */; };
 		2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833E626CA5CB300B7B3F9 /* APIClient.swift */; };
+		2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EA26CA676D00B7B3F9 /* RequestType.swift */; };
+		2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EC26CA677900B7B3F9 /* Config.swift */; };
+		2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */; };
+		2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F026CA67CE00B7B3F9 /* Token.swift */; };
+		2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */; };
+		2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F626CA724900B7B3F9 /* AppDelegate.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +56,13 @@
 		2E6832A726C6473400B7B3F9 /* Marvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel.swift; sourceTree = "<group>"; };
 		2E6832B226C67B6800B7B3F9 /* ResultCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCode.swift; sourceTree = "<group>"; };
 		2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
-		2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUserContentAPI.swift; sourceTree = "<group>"; };
-		2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
-		2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
 		2E6833E626CA5CB300B7B3F9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2E6833EA26CA676D00B7B3F9 /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		2E6833EC26CA677900B7B3F9 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		2E6833F026CA67CE00B7B3F9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
+		2E6833F626CA724900B7B3F9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaCombineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,9 +106,9 @@
 		2E68327726C62F3200B7B3F9 /* MoyaCombineDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2E6833F626CA724900B7B3F9 /* AppDelegate.swift */,
 				2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */,
 				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
-				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
 				2E6832A426C644A000B7B3F9 /* Common */,
 				2E6832B626C67C8C00B7B3F9 /* Model */,
 				2E68329426C6448000B7B3F9 /* Helpers */,
@@ -146,9 +152,12 @@
 		2E68329F26C6449300B7B3F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */,
-				2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */,
-				2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */,
+				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
+				2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */,
+				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
+				2E6833EC26CA677900B7B3F9 /* Config.swift */,
+				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
+				2E6833EA26CA676D00B7B3F9 /* RequestType.swift */,
 				2E6832A026C6449300B7B3F9 /* CodableResponses.swift */,
 				2E6832A726C6473400B7B3F9 /* Marvel.swift */,
 			);
@@ -315,22 +324,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */,
 				2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */,
 				2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */,
+				2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */,
 				2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */,
 				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
 				2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */,
-				2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */,
+				2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */,
 				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
 				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
 				2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */,
+				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
+				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
+				2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */,
 				2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */,
 				2E6832A326C6449300B7B3F9 /* CodableResponses.swift in Sources */,
+				2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */,
 				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
 				2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */,
 				2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */,
-				2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
