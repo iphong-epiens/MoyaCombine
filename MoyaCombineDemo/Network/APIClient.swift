@@ -121,26 +121,24 @@ final public class API: ObservableObject {
 }
 
 extension API.NetworkClient {
-    func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, MoyaError> {
-
+    func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, Error> {
       let target = MultiTarget(request)
 
         return self.provider.requestPublisher(target)
-//            .tryMap{
-//                if self.hasValidRefreshToken {
-//                    throw SwsApiError.refreshTokenError
-//                }
-//                else if let statusCode = $0.response?.statusCode, statusCode == 200 {
-//                    throw SwsApiError.refreshTokenError
-//                }
-//                return $0
-//            }
+            .tryMap{
+                if self.hasValidRefreshToken {
+                    throw SwsApiError.refreshTokenError
+                }
+                else if let statusCode = $0.response?.statusCode, statusCode == 200 {
+                    throw SwsApiError.refreshTokenError
+                }
+                return $0
+            }
             .receive(on: DispatchQueue.global(qos: .background))
             .handleEvents(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error as SwsApiError):
                     print(">>> SwsApiError", error)
-                    
                     
                 default:
                     break

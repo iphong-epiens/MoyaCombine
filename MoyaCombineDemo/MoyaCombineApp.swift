@@ -11,13 +11,14 @@ import KeychainAccess
 import CryptoSwift
 import SwiftyRSA
 
+let KeyChain = MoyaCombineApp.keychain
 
 @main
 struct MoyaCombineApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
     @StateObject var settings: AppSettings = AppSettings()
-    //  static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
+    static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
     
     var body: some Scene {
         WindowGroup {

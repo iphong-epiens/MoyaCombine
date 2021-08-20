@@ -65,11 +65,10 @@ struct ContentView: View {
     let provider = MoyaProvider<Marvel>()
     
     init() {
-
         cancellable = API.shared.request(ReqAPI.Auth.publickey())
             .sink(receiveCompletion: {
                 print($0)
-            }, receiveValue: { [self] response in
+            }, receiveValue: { response in
                 do {
                   let json = try response.mapJSON()
                   if let object = json as? [String: Any],
@@ -78,10 +77,9 @@ struct ContentView: View {
                      let res = jsonData["res"]  as? [String: Any],
                      let publicKey = res["publicKey"] as? String {
                     //save public key
-                    try AppSettings.keychain.set(publicKey, key: "publicKey")
+                    try KeyChain.set(publicKey, key: "publicKey")
                     print("new publicKey:", publicKey)
                     //single(.success(response))
-                    
                   }
                 } catch let error {
                   print(error.localizedDescription)
