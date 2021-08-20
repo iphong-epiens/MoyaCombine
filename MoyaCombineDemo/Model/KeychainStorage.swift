@@ -33,15 +33,14 @@ struct KeychainStorage<T: Codable>: DynamicProperty {
           }
         }
       }
-    }
-    catch let error {
+    } catch let error {
       fatalError("\(error)")
     }
     self._value = State<Value?>(initialValue: initialValue)
   }
   var wrappedValue: Value? {
-    get  { value }
-    
+    get { value }
+
     nonmutating set {
       value = newValue
       do {

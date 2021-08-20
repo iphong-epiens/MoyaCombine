@@ -10,6 +10,6 @@ import Combine
 import KeychainAccess
 
 class AppSettings: ObservableObject {
-    @Published var appList = ["aaa"]
-//    static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
+  @Published var appList = ["aaa"]
+  //    static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 }

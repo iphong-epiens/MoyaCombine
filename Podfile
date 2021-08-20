@@ -12,5 +12,7 @@ target 'MoyaCombineDemo' do
   pod 'JWTDecode'
   pod 'SwiftyRSA'
   pod 'PKHUD'
+  pod 'SwiftDate'
+  pod 'SwiftLint'
 
 end

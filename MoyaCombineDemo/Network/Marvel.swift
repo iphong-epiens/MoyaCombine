@@ -9,10 +9,10 @@ import Foundation
 import Moya
 
 public enum Marvel {
-    static private let publicKey = "a3c77f3df011888fe61fe1064f8f5032"
-    static private let privateKey = "700a7043cd5fa654facf11ab211d4cf198a66e42"
+  static private let publicKey = "a3c77f3df011888fe61fe1064f8f5032"
+  static private let privateKey = "700a7043cd5fa654facf11ab211d4cf198a66e42"
 
-    case comics
+  case comics
 }
 
 extension Marvel: TargetType {
@@ -41,27 +41,27 @@ extension Marvel: TargetType {
   }
 
   // 5
-    public var task: Task {
-      let ts = "\(Date().timeIntervalSince1970)"
-      // 1
-      let hash = (ts + Marvel.privateKey + Marvel.publicKey).md5
-      
-      // 2
-      let authParams = ["apikey": Marvel.publicKey, "ts": ts, "hash": hash]
-      
-      switch self {
-      case .comics:
-        // 3
-        return .requestParameters(
-          parameters: [
-            "format": "comic",
-            "formatType": "comic",
-            "orderBy": "-onsaleDate",
-            "dateDescriptor": "lastWeek",
-            "limit": 50] + authParams,
-          encoding: URLEncoding.default)
-      }
+  public var task: Task {
+    let ts = "\(Date().timeIntervalSince1970)"
+    // 1
+    let hash = (ts + Marvel.privateKey + Marvel.publicKey).md5
+
+    // 2
+    let authParams = ["apikey": Marvel.publicKey, "ts": ts, "hash": hash]
+
+    switch self {
+    case .comics:
+      // 3
+      return .requestParameters(
+        parameters: [
+          "format": "comic",
+          "formatType": "comic",
+          "orderBy": "-onsaleDate",
+          "dateDescriptor": "lastWeek",
+          "limit": 50] + authParams,
+        encoding: URLEncoding.default)
     }
+  }
 
   // 6
   public var headers: [String: String]? {
