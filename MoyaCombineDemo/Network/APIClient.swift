@@ -133,31 +133,26 @@ extension API.NetworkClient {
           throw SwsApiError.refreshTokenError
         }
 
-        let json = try $0.mapJSON()
+        let result = try $0.map(RespData.self)
 
-        if let object = json as? [String: Any], let resultData = object["jsonData"] as? [String: Any], let statusCode = resultData["code"] as? Int, let resultCode = resultData["resultCode"] as? String {
+        let statusCode = HTTPStatusCode(rawValue: result.jsonData.code)
+        let resultCode = ResultCode(rawValue: result.jsonData.resultCode)
 
-          let status = HTTPStatusCode(rawValue: statusCode)
-          let result = ResultCode(rawValue: resultCode)
+        switch statusCode {
+        case .ok:
+          switch resultCode {
+          case .authError:
+            throw SwsApiError.accessTokenError
 
-          print((#function, statusCode))
-
-          switch status {
-          case .ok:
-            switch result {
-            case .authError:
-              throw SwsApiError.accessTokenError
-
-            case .publicKeyError:
-              throw SwsApiError.publicKeyError
-
-            default:
-              break
-            }
+          case .publicKeyError:
+            throw SwsApiError.publicKeyError
 
           default:
             break
           }
+
+        default:
+          break
         }
 
         return $0
@@ -166,7 +161,7 @@ extension API.NetworkClient {
       .handleEvents(receiveCompletion: { completion in
         switch completion {
         case .finished:
-          print("finished")
+          print("request success!")
 
         case .failure(let error):
           print(error.localizedDescription)
@@ -191,7 +186,7 @@ extension API.NetworkClient {
 
   func getPublicKey() {
 
-    _ = self.request(ReqAPI.Auth.publickey())
+    _ = API.shared.request(ReqAPI.Auth.publickey())
       .sink(receiveCompletion: {
         print($0)
       }, receiveValue: {

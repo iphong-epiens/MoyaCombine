@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7C26CFBC370059C7D8 /* RespData.swift */; };
+		2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */; };
 		2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */; };
 		2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327A26C62F3200B7B3F9 /* ContentView.swift */; };
 		2E68327D26C62F3300B7B3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E68327C26C62F3300B7B3F9 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E466E7C26CFBC370059C7D8 /* RespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespData.swift; sourceTree = "<group>"; };
+		2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRespData.swift; sourceTree = "<group>"; };
 		2E68327526C62F3200B7B3F9 /* MoyaCombineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyaCombineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineApp.swift; sourceTree = "<group>"; };
 		2E68327A26C62F3200B7B3F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
 				2E6833EC26CA677900B7B3F9 /* Config.swift */,
 				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
+				2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */,
+				2E466E7C26CFBC370059C7D8 /* RespData.swift */,
 				2E6833EA26CA676D00B7B3F9 /* RequestType.swift */,
 				2E6832A026C6449300B7B3F9 /* CodableResponses.swift */,
 				2E6832A726C6473400B7B3F9 /* Marvel.swift */,
@@ -350,10 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */,
+				2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */,
 				2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */,
 				2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */,
 				2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */,
 				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
+				2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */,
 				2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */,
 				2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */,
 				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
