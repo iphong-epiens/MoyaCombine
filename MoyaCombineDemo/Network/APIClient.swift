@@ -123,11 +123,11 @@ final public class API: ObservableObject {
 extension API.NetworkClient {
     func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, Error> {
         let target = MultiTarget(request)
-
+        
         return self.provider.requestPublisher(target)
             .tryMap{
                 if self.hasValidRefreshToken {
-                  throw SwsApiError.refreshTokenError
+                    throw SwsApiError.refreshTokenError
                 }
                 
                 let json = try $0.mapJSON()
@@ -144,10 +144,10 @@ extension API.NetworkClient {
                         switch result {
                         case .authError:
                             throw SwsApiError.accessTokenError
-
+                            
                         case .publicKeyError:
                             throw SwsApiError.publicKeyError
-
+                            
                         default:
                             break
                         }
@@ -162,6 +162,12 @@ extension API.NetworkClient {
             .receive(on: DispatchQueue.global(qos: .background))
             .handleEvents(receiveCompletion: { completion in
                 switch completion {
+                case .finished:
+                    print("finished")
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
                 case .failure(let error as SwsApiError):
                     print(">>> SwsApiError", error)
                     switch error {
@@ -173,12 +179,7 @@ extension API.NetworkClient {
                         
                     case .publicKeyError:
                         print("publicKeyError")
-
-                    default:
-                        break
                     }
-                default:
-                    break
                 }
             })
             .receive(on: DispatchQueue.main)
