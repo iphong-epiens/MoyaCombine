@@ -34,6 +34,8 @@
 		2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F026CA67CE00B7B3F9 /* Token.swift */; };
 		2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */; };
 		2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F626CA724900B7B3F9 /* AppDelegate.swift */; };
+		2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68341826CF552E00B7B3F9 /* AppSettings.swift */; };
+		2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		2E6833F026CA67CE00B7B3F9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
 		2E6833F626CA724900B7B3F9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2E68341826CF552E00B7B3F9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaCombineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,8 +110,8 @@
 		2E68327726C62F3200B7B3F9 /* MoyaCombineDemo */ = {
 			isa = PBXGroup;
 			children = (
-				2E6833F626CA724900B7B3F9 /* AppDelegate.swift */,
 				2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */,
+				2E6833F626CA724900B7B3F9 /* AppDelegate.swift */,
 				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
 				2E6832A426C644A000B7B3F9 /* Common */,
 				2E6832B626C67C8C00B7B3F9 /* Model */,
@@ -178,6 +182,8 @@
 		2E6832B626C67C8C00B7B3F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2E68341826CF552E00B7B3F9 /* AppSettings.swift */,
+				2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
 				2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */,
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
+				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
 				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
 				2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */,
 				2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */,
@@ -342,6 +349,7 @@
 				2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */,
 				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
 				2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */,
+				2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */,
 				2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

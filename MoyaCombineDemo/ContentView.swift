@@ -15,10 +15,13 @@ import JWTDecode
 import SwiftyRSA
 
 struct ContentView: View {
+    @EnvironmentObject private var settings: AppSettings
+    
     struct Response<T> {
         let value: T
         let response: URLResponse
     }
+    
     var cancellable: AnyCancellable?
     
     @State private var msgTextStr: String = """
@@ -62,10 +65,11 @@ struct ContentView: View {
     let provider = MoyaProvider<Marvel>()
     
     init() {
+
         cancellable = API.shared.request(ReqAPI.Auth.publickey())
             .sink(receiveCompletion: {
                 print($0)
-            }, receiveValue: { response in
+            }, receiveValue: { [self] response in
                 do {
                   let json = try response.mapJSON()
                   if let object = json as? [String: Any],
@@ -74,15 +78,17 @@ struct ContentView: View {
                      let res = jsonData["res"]  as? [String: Any],
                      let publicKey = res["publicKey"] as? String {
                     //save public key
-                   try KeyChain.set(publicKey, key: "publicKey")
+                    try AppSettings.keychain.set(publicKey, key: "publicKey")
                     print("new publicKey:", publicKey)
                     //single(.success(response))
+                    
                   }
                 } catch let error {
                   print(error.localizedDescription)
                  // single(.error(error))
                 }
             })
+
    //     API.shared.getPublicKey()
       
 //        cancellable = API.shared.request(Marvel.comics)
@@ -120,6 +126,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             viewMessage(image: $msgImgStr, text: $msgTextStr)
+        }.onAppear{
+           print(">>> settings.appList", settings.appList)
         }
     }
 }

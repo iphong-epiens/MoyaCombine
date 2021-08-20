@@ -7,12 +7,8 @@
 
 import Foundation
 import UIKit
-import KeychainAccess
-
-let KeyChain = AppDelegate().keychain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     print(#function)
