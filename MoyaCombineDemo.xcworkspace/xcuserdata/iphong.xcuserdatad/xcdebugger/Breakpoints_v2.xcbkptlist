@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2F505771-3B00-44E7-932E-941DDBB9F73D"
+            uuid = "482CE2F0-487A-4E8F-9ED5-F8BB451ED89A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoyaCombineDemo/Network/AuthAPI.swift"
+            filePath = "MoyaCombineDemo/MoyaCombineApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "task"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
