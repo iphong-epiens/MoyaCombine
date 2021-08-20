@@ -76,9 +76,10 @@ final public class API: ObservableObject {
       }
     }
   }
-  /// Default api client
-  public static let shared: NetworkClient = {
 
+  /// Default api client
+  // static -> lazy하게 생성 // let -> thread-safe 보장
+  static let shared: NetworkClient = {
     let networkClosure = {(_ change: NetworkActivityChangeType, _ target: TargetType) in
       DispatchQueue.main.async {
         switch change {
@@ -118,6 +119,7 @@ final public class API: ObservableObject {
   }()
 
   // API singleton
+  // private 권한을 설정하여 외부에서 인스턴스를 생성할 수 없게 함
   private init() {}
 }
 
