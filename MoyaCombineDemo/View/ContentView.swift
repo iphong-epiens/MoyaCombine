@@ -13,6 +13,7 @@ import KeychainAccess
 import CryptoSwift
 import JWTDecode
 import SwiftyRSA
+import Kingfisher
 
 struct ContentView: View {
   @StateObject var viewModel = ViewModel()
@@ -20,18 +21,47 @@ struct ContentView: View {
 
   var body: some View {
     ZStack {
-      VStack(spacing: 20) {
-        Text("Access Token:\n\n\(viewModel.accessToken)")
-          .foregroundColor(.blue)
-          .fontWeight(.bold)
+      Color.gray.ignoresSafeArea()
 
-        Text("Refresh Token:\n\n\(viewModel.refreshToken)")
-          .foregroundColor(.red)
-          .fontWeight(.bold)
+      VStack(spacing: 20) {
+        //        Text("Access Token:\n\n\(viewModel.accessToken)")
+        //          .foregroundColor(.blue)
+        //          .fontWeight(.bold)
+        //
+        //        Text("Refresh Token:\n\n\(viewModel.refreshToken)")
+        //          .foregroundColor(.red)
+        //          .fontWeight(.bold)
+
+        Button("회원 정보") {
+          viewModel.fetchUserData()
+        }
+        .foregroundColor(.black)
+        .font(.largeTitle)
+
+        HStack {
+          if viewModel.userInfo.count > 0 {
+            Text(viewModel.userInfo)
+              .fontWeight(.bold)
+          }
+
+          if viewModel.profileImgUrl.count > 0 {
+            KFImage(URL(string: viewModel.profileImgUrl)!)
+              .resizable()
+              .frame(width: 100, height: 100, alignment: .center)
+              .cornerRadius(100/2)
+              .shadow(radius: 10)
+          }
+        }
+
+        Spacer()
       }.padding()
 
       if viewModel.loading {
         ActivityIndicator()
+      }
+
+      if viewModel.userInfoError {
+        Text("userInfoError")
       }
     }.onAppear {
       print(">>> settings.appList", settings.appList)

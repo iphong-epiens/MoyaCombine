@@ -15,6 +15,9 @@
 		2E466E8726D36F670059C7D8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8626D36F670059C7D8 /* ViewModel.swift */; };
 		2E466E8E26D385BB0059C7D8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8D26D385BB0059C7D8 /* ColorExtension.swift */; };
 		2E466E9026D385C60059C7D8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */; };
+		2E466E9226D39C120059C7D8 /* UserReqData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E9126D39C120059C7D8 /* UserReqData.swift */; };
+		2E466E9426D39C1F0059C7D8 /* UserRespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E9326D39C1F0059C7D8 /* UserRespData.swift */; };
+		2E466E9826D39EAE0059C7D8 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E9726D39EAE0059C7D8 /* UserAPI.swift */; };
 		2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */; };
 		2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327A26C62F3200B7B3F9 /* ContentView.swift */; };
 		2E68327D26C62F3300B7B3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E68327C26C62F3300B7B3F9 /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 		2E466E8626D36F670059C7D8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2E466E8D26D385BB0059C7D8 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		2E466E9126D39C120059C7D8 /* UserReqData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReqData.swift; sourceTree = "<group>"; };
+		2E466E9326D39C1F0059C7D8 /* UserRespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRespData.swift; sourceTree = "<group>"; };
+		2E466E9726D39EAE0059C7D8 /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		2E68327526C62F3200B7B3F9 /* MoyaCombineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyaCombineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineApp.swift; sourceTree = "<group>"; };
 		2E68327A26C62F3200B7B3F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,10 +106,8 @@
 		2E466E8826D373690059C7D8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				2E6833EA26CA676D00B7B3F9 /* RequestType.swift */,
-				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
 				2E466E8226D342190059C7D8 /* AuthReqData.swift */,
-				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
+				2E466E9126D39C120059C7D8 /* UserReqData.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -113,6 +117,7 @@
 			children = (
 				2E466E7C26CFBC370059C7D8 /* RespData.swift */,
 				2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */,
+				2E466E9326D39C1F0059C7D8 /* UserRespData.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -142,6 +147,26 @@
 				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2E466E9526D39DFC0059C7D8 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		2E466E9626D39E130059C7D8 /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				2E6833EA26CA676D00B7B3F9 /* RequestType.swift */,
+				2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */,
+				2E466E9726D39EAE0059C7D8 /* UserAPI.swift */,
+				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
+				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
+			);
+			path = Target;
 			sourceTree = "<group>";
 		};
 		2E68326C26C62F3200B7B3F9 = {
@@ -204,8 +229,8 @@
 		2E68329F26C6449300B7B3F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
-				2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */,
+				2E466E9526D39DFC0059C7D8 /* Provider */,
+				2E466E9626D39E130059C7D8 /* Target */,
 				2E466E8826D373690059C7D8 /* Request */,
 				2E466E8926D373750059C7D8 /* Response */,
 			);
@@ -400,11 +425,13 @@
 				2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */,
 				2E466E8326D342190059C7D8 /* AuthReqData.swift in Sources */,
 				2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */,
+				2E466E9226D39C120059C7D8 /* UserReqData.swift in Sources */,
 				2E466E8526D342480059C7D8 /* String+Extension.swift in Sources */,
 				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
 				2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */,
 				2E466E8726D36F670059C7D8 /* ViewModel.swift in Sources */,
 				2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */,
+				2E466E9826D39EAE0059C7D8 /* UserAPI.swift in Sources */,
 				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
 				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
@@ -417,6 +444,7 @@
 				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
 				2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */,
 				2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */,
+				2E466E9426D39C1F0059C7D8 /* UserRespData.swift in Sources */,
 				2E466E8126D341E90059C7D8 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,16 +11,12 @@ import Foundation
 class Utils {
   static let shared = Utils()
 
-  struct Animations {
-    static let duration = 0.25
-    static let delay = 1.0
-  }
+  var userSysId: String!
 
-  enum PagingMode: Int {
-    case load = 0
-    case loadMore
+  var accessToken: String? {
+    guard let accessToken = try? KeyChain.getString("accessToken") else { return  nil }
+    return accessToken
   }
-  static let tableViewRowCount = 10
 
   static var encoder: JSONEncoder {
     let encoder = JSONEncoder()
