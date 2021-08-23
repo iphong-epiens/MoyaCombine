@@ -22,13 +22,13 @@ class ViewModel: ObservableObject {
 
     API.shared.request(ReqAPI.Auth.login(jsonString.toParams))
       .map { $0.data }
-//      .mapError({ (error) -> Error in
-//        print(error)
-//        DispatchQueue.main.async {
-//          self.loading = false
-//        }
-//        return error
-//      })
+      //      .mapError({ (error) -> Error in
+      //        print(error)
+      //        DispatchQueue.main.async {
+      //          self.loading = false
+      //        }
+      //        return error
+      //      })
       .decode(type: LoginRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in
         print(completion)
