@@ -38,7 +38,7 @@ class ViewModel: ObservableObject {
         DispatchQueue.main.async {
           self.loading = false
         }
-      }, receiveValue: { [self] response in
+      }, receiveValue: { response in
         print(response)
         do {
           self.accessToken = response.jsonData.accessToken
