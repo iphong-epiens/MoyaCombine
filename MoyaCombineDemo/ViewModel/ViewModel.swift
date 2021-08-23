@@ -11,6 +11,8 @@ import Combine
 class ViewModel: ObservableObject {
   var cancellables = Set<AnyCancellable>()
   @Published var loading = false
+  @Published var accessToken: String = "---"
+  @Published var refreshToken: String = "---"
 
   func normalUserLogin(userId: String, password: String) {
     guard let pwdEncodeStr = API.shared.encryptRsaString(password) else { return }
@@ -36,11 +38,14 @@ class ViewModel: ObservableObject {
         DispatchQueue.main.async {
           self.loading = false
         }
-      }, receiveValue: { response in
+      }, receiveValue: { [self] response in
         print(response)
         do {
-          try KeyChain.set(response.jsonData.refreshToken, key: "refreshToken")
+          self.accessToken = response.jsonData.accessToken
+          self.refreshToken = response.jsonData.refreshToken
+
           try KeyChain.set(response.jsonData.accessToken, key: "accessToken")
+          try KeyChain.set(response.jsonData.refreshToken, key: "refreshToken")
         } catch let error {
           print(error.localizedDescription)
         }

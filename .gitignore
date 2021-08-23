@@ -50,6 +50,8 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+/MoyaCombineDemo.xcworkspace/xcuserdata/iphong.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+
 ## Other
 *.moved-aside
 *.xccheckout
