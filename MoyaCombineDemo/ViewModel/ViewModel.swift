@@ -19,6 +19,10 @@ class ViewModel: ObservableObject {
   @Published var userInfo: String = ""
   @Published var profileImgUrl: String = ""
 
+  func handleNotification(_ message: String) {
+    print(message)
+  }
+
   func normalUserLogin(userId: String, password: String) {
     guard let pwdEncodeStr = API.shared.encryptRsaString(password) else { return }
 
@@ -45,16 +49,19 @@ class ViewModel: ObservableObject {
         }
       }, receiveValue: { response in
         print(response)
-        do {
-          self.accessToken = response.jsonData.accessToken
-          self.refreshToken = response.jsonData.refreshToken
-          self.authSysId = response.jsonData.authSysId
 
+        self.accessToken = response.jsonData.accessToken
+        self.refreshToken = response.jsonData.refreshToken
+        self.authSysId = response.jsonData.authSysId
+
+        do {
           try KeyChain.set(response.jsonData.accessToken, key: "accessToken")
           try KeyChain.set(response.jsonData.refreshToken, key: "refreshToken")
         } catch let error {
           print(error.localizedDescription)
         }
+
+        self.fetchUserData()
       })
       .store(in: &cancellables)
   }

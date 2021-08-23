@@ -64,7 +64,7 @@ struct ContentView: View {
         Text("userInfoError")
       }
     }.onAppear {
-      print(">>> settings.appList", settings.appList)
+      //      print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
     }
   }

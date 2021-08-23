@@ -14,7 +14,6 @@ import JWTDecode
 import KeychainAccess
 import CryptoSwift
 import SwiftyRSA
-import PKHUD
 import Alamofire
 import Combine
 import CombineMoya
@@ -32,7 +31,7 @@ struct ResultCodeError: Error {
   }
 }
 
-final public class API: ObservableObject {
+public class API: ObservableObject {
 
   public struct NetworkClient {
     public var token: String? // We should persist this value
@@ -85,8 +84,8 @@ final public class API: ObservableObject {
         switch change {
         case .began: break
         //HUD.show(.progress, onView: AppDelegate.root.view)
-        case .ended:
-          HUD.hide(afterDelay: 1.0)
+        case .ended: break
+        //          HUD.hide(afterDelay: 1.0)
         }
       }
     }

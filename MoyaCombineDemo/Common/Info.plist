@@ -38,10 +38,6 @@
 	</dict>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Save ComicCards card to your photo library</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>CoolStoryregular.ttf</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
