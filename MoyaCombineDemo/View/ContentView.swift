@@ -55,14 +55,14 @@ struct ContentView: View {
       if viewModel.userInfoError {
         Text("userInfoError")
       }
-
-      if viewModel.networkPopup {
-        Text("\(viewModel.networkMsg)")
-      }
-
     }.onAppear {
       //print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
+    }
+    .alert(isPresented: $viewModel.networkPopup) {
+      Alert(title: Text("Title"), message: Text("Message"), primaryButton: .destructive(Text("\(viewModel.networkMsg)"), action: {
+        // Some action
+      }), secondaryButton: .cancel())
     }
   }
 }
