@@ -198,13 +198,16 @@ extension API.NetworkClient {
     print(">>> SwsApiError", error)
     switch error {
     case .refreshTokenError:
-      print("refreshTokenError")
+      //print("refreshTokenError")
+      self.changeRefreshToken(target: target)
 
     case .accessTokenError:
-      print("accessTokenError")
+      //print("accessTokenError")
+      self.changeAccessToken(target: target)
 
     case .publicKeyError:
-      print("publicKeyError")
+      //print("publicKeyError")
+      self.changePublicKey(target: target)
     }
   }
 
