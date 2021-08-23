@@ -175,18 +175,22 @@ extension API.NetworkClient {
         switch completion {
         case .finished:
           print("request success!")
-          let sender = NetworkInfoNotificationSender("request success!")
-          NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
 
         case .failure(let error as SwsApiError):
           self.requestErrorHandler(error, target: target)
 
         case .failure(let error):
           print(error.localizedDescription)
+          self.networkPopup(error.localizedDescription)
         }
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
+  }
+
+  func networkPopup(_ msg: String) {
+    let sender = NetworkInfoNotificationSender(msg)
+    NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
   }
 
   // MARK: - requestErrorHandler

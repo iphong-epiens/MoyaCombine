@@ -16,19 +16,19 @@ class ViewModel: ObservableObject {
   @Published var userInfoError: Bool = false
   @Published var userInfo: String = ""
   @Published var profileImgUrl: String = ""
+  @Published var networkPopup: Bool = false
+  @Published var networkMsg: String = ""
 
   init() {
     NotificationCenter.default.publisher(for: NetworkInfoNotificationSender.notification)
       .compactMap {$0.object as? NetworkInfoNotificationSender}
       .map {$0.message}
-      .sink { [weak self] message in
-        self?.handleNotification(message)
+      .receive(on: DispatchQueue.main)
+      .sink {
+        self.networkPopup = true
+        self.networkMsg = $0
       }
       .store(in: &cancellables)
-  }
-
-  func handleNotification(_ message: String) {
-    print(message)
   }
 
   func normalUserLogin(userId: String, password: String) {

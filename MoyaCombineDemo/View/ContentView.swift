@@ -55,6 +55,11 @@ struct ContentView: View {
       if viewModel.userInfoError {
         Text("userInfoError")
       }
+
+      if viewModel.networkPopup {
+        Text("\(viewModel.networkMsg)")
+      }
+
     }.onAppear {
       //print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
