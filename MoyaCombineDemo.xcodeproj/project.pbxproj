@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7C26CFBC370059C7D8 /* RespData.swift */; };
+		2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */; };
+		2E466E8126D341E90059C7D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8026D341E90059C7D8 /* Utils.swift */; };
+		2E466E8326D342190059C7D8 /* AuthReqData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8226D342190059C7D8 /* AuthReqData.swift */; };
+		2E466E8526D342480059C7D8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8426D342480059C7D8 /* String+Extension.swift */; };
+		2E466E8726D36F670059C7D8 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8626D36F670059C7D8 /* ViewModel.swift */; };
 		2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */; };
 		2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68327A26C62F3200B7B3F9 /* ContentView.swift */; };
 		2E68327D26C62F3300B7B3F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E68327C26C62F3300B7B3F9 /* Assets.xcassets */; };
@@ -19,20 +25,29 @@
 		2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329526C6448000B7B3F9 /* Dictionary+Ext.swift */; };
 		2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329626C6448000B7B3F9 /* String+MD5.swift */; };
 		2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329726C6448000B7B3F9 /* Date+ISO8601.swift */; };
-		2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329D26C6449300B7B3F9 /* Comic.swift */; };
-		2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68329E26C6449300B7B3F9 /* UploadResult.swift */; };
-		2E6832A326C6449300B7B3F9 /* CodableResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A026C6449300B7B3F9 /* CodableResponses.swift */; };
 		2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */; };
-		2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832A726C6473400B7B3F9 /* Marvel.swift */; };
 		2E6832A926C64A6400B7B3F9 /* CoolStoryregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E68329326C6447100B7B3F9 /* CoolStoryregular.ttf */; };
 		2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B226C67B6800B7B3F9 /* ResultCode.swift */; };
 		2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */; };
-		2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */; };
-		2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */; };
-		2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */; };
+		2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833E626CA5CB300B7B3F9 /* APIClient.swift */; };
+		2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EA26CA676D00B7B3F9 /* RequestType.swift */; };
+		2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EC26CA677900B7B3F9 /* Config.swift */; };
+		2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */; };
+		2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F026CA67CE00B7B3F9 /* Token.swift */; };
+		2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */; };
+		2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6833F626CA724900B7B3F9 /* AppDelegate.swift */; };
+		2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68341826CF552E00B7B3F9 /* AppSettings.swift */; };
+		2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */; };
+		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E466E7C26CFBC370059C7D8 /* RespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespData.swift; sourceTree = "<group>"; };
+		2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRespData.swift; sourceTree = "<group>"; };
+		2E466E8026D341E90059C7D8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2E466E8226D342190059C7D8 /* AuthReqData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthReqData.swift; sourceTree = "<group>"; };
+		2E466E8426D342480059C7D8 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2E466E8626D36F670059C7D8 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		2E68327526C62F3200B7B3F9 /* MoyaCombineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoyaCombineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineApp.swift; sourceTree = "<group>"; };
 		2E68327A26C62F3200B7B3F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,16 +59,21 @@
 		2E68329626C6448000B7B3F9 /* String+MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		2E68329726C6448000B7B3F9 /* Date+ISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
 		2E68329B26C6448B00B7B3F9 /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		2E68329D26C6449300B7B3F9 /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		2E68329E26C6449300B7B3F9 /* UploadResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadResult.swift; sourceTree = "<group>"; };
-		2E6832A026C6449300B7B3F9 /* CodableResponses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponses.swift; sourceTree = "<group>"; };
 		2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
-		2E6832A726C6473400B7B3F9 /* Marvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel.swift; sourceTree = "<group>"; };
 		2E6832B226C67B6800B7B3F9 /* ResultCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCode.swift; sourceTree = "<group>"; };
 		2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
-		2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubUserContentAPI.swift; sourceTree = "<group>"; };
-		2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
-		2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyAPI.swift; sourceTree = "<group>"; };
+		2E6833E626CA5CB300B7B3F9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		2E6833EA26CA676D00B7B3F9 /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		2E6833EC26CA677900B7B3F9 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		2E6833F026CA67CE00B7B3F9 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkType.swift; sourceTree = "<group>"; };
+		2E6833F626CA724900B7B3F9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2E68341826CF552E00B7B3F9 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaCombineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,17 +86,66 @@
 				2E68328F26C6308300B7B3F9 /* Moya in Frameworks */,
 				2E68328926C6308300B7B3F9 /* ReactiveMoya in Frameworks */,
 				2E68329226C63F6400B7B3F9 /* Kingfisher in Frameworks */,
+				757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E466E8826D373690059C7D8 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				2E6833EA26CA676D00B7B3F9 /* RequestType.swift */,
+				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
+				2E466E8226D342190059C7D8 /* AuthReqData.swift */,
+				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		2E466E8926D373750059C7D8 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				2E466E7C26CFBC370059C7D8 /* RespData.swift */,
+				2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		2E466E8A26D378E80059C7D8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2E466E8626D36F670059C7D8 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2E466E8B26D378F50059C7D8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2E6833F626CA724900B7B3F9 /* AppDelegate.swift */,
+				2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */,
+				2E6833EC26CA677900B7B3F9 /* Config.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2E466E8C26D379070059C7D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2E68326C26C62F3200B7B3F9 = {
 			isa = PBXGroup;
 			children = (
 				2E68327726C62F3200B7B3F9 /* MoyaCombineDemo */,
 				2E68327626C62F3200B7B3F9 /* Products */,
+				8B367466E0ECD6B0ED9AA2B8 /* Pods */,
+				F06378AD4261ECAAA6C76F4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,13 +160,13 @@
 		2E68327726C62F3200B7B3F9 /* MoyaCombineDemo */ = {
 			isa = PBXGroup;
 			children = (
-				2E68327826C62F3200B7B3F9 /* MoyaCombineApp.swift */,
-				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
+				2E466E8B26D378F50059C7D8 /* App */,
+				2E466E8C26D379070059C7D8 /* View */,
+				2E466E8A26D378E80059C7D8 /* ViewModel */,
 				2E6832A426C644A000B7B3F9 /* Common */,
 				2E6832B626C67C8C00B7B3F9 /* Model */,
 				2E68329426C6448000B7B3F9 /* Helpers */,
 				2E68329F26C6449300B7B3F9 /* Network */,
-				2E68329C26C6449300B7B3F9 /* Models */,
 				2E68327E26C62F3300B7B3F9 /* Preview Content */,
 			);
 			path = MoyaCombineDemo;
@@ -114,6 +183,8 @@
 		2E68329426C6448000B7B3F9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2E466E8026D341E90059C7D8 /* Utils.swift */,
+				2E466E8426D342480059C7D8 /* String+Extension.swift */,
 				2E6832B326C67B6800B7B3F9 /* HTTPStatusCode.swift */,
 				2E6832B226C67B6800B7B3F9 /* ResultCode.swift */,
 				2E6832A526C6454A00B7B3F9 /* FileManagerExtensions.swift */,
@@ -124,23 +195,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		2E68329C26C6449300B7B3F9 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				2E68329D26C6449300B7B3F9 /* Comic.swift */,
-				2E68329E26C6449300B7B3F9 /* UploadResult.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2E68329F26C6449300B7B3F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2E6832B926C67D0200B7B3F9 /* GiphyAPI.swift */,
-				2E6832B826C67D0200B7B3F9 /* GitHubAPI.swift */,
-				2E6832B726C67D0200B7B3F9 /* GitHubUserContentAPI.swift */,
-				2E6832A026C6449300B7B3F9 /* CodableResponses.swift */,
-				2E6832A726C6473400B7B3F9 /* Marvel.swift */,
+				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
+				2E6833F326CA67DD00B7B3F9 /* NetworkType.swift */,
+				2E466E8826D373690059C7D8 /* Request */,
+				2E466E8926D373750059C7D8 /* Response */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -159,8 +220,27 @@
 		2E6832B626C67C8C00B7B3F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2E68341826CF552E00B7B3F9 /* AppSettings.swift */,
+				2E68341C26CF6E6D00B7B3F9 /* KeychainStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8B367466E0ECD6B0ED9AA2B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */,
+				E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F06378AD4261ECAAA6C76F4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,9 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E68328426C62F3300B7B3F9 /* Build configuration list for PBXNativeTarget "MoyaCombineDemo" */;
 			buildPhases = (
+				380E0BFA72A359F6709AD201 /* [CP] Check Pods Manifest.lock */,
 				2E68327126C62F3200B7B3F9 /* Sources */,
 				2E68327226C62F3200B7B3F9 /* Frameworks */,
 				2E68327326C62F3200B7B3F9 /* Resources */,
+				5BBF3424146EFDDFE6D0E2D3 /* [CP] Embed Pods Frameworks */,
+				2E466E7B26CFB91B0059C7D8 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -239,26 +322,94 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E466E7B26CFB91B0059C7D8 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint autocorrect --format\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		380E0BFA72A359F6709AD201 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoyaCombineDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BBF3424146EFDDFE6D0E2D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E68327126C62F3200B7B3F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E6832BA26C67D0200B7B3F9 /* GitHubUserContentAPI.swift in Sources */,
 				2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */,
+				2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */,
 				2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */,
+				2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */,
+				2E466E8326D342190059C7D8 /* AuthReqData.swift in Sources */,
+				2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */,
+				2E466E8526D342480059C7D8 /* String+Extension.swift in Sources */,
 				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
-				2E6832A126C6449300B7B3F9 /* Comic.swift in Sources */,
-				2E6832BB26C67D0200B7B3F9 /* GitHubAPI.swift in Sources */,
+				2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */,
+				2E466E8726D36F670059C7D8 /* ViewModel.swift in Sources */,
+				2E6833F526CA67DE00B7B3F9 /* NetworkType.swift in Sources */,
 				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
 				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
-				2E6832A226C6449300B7B3F9 /* UploadResult.swift in Sources */,
+				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
+				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
+				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
+				2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */,
 				2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */,
-				2E6832A326C6449300B7B3F9 /* CodableResponses.swift in Sources */,
+				2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */,
 				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
-				2E6832A826C6473400B7B3F9 /* Marvel.swift in Sources */,
+				2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */,
 				2E68329926C6448000B7B3F9 /* String+MD5.swift in Sources */,
-				2E6832BC26C67D0200B7B3F9 /* GiphyAPI.swift in Sources */,
+				2E466E8126D341E90059C7D8 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +534,7 @@
 		};
 		2E68328526C62F3300B7B3F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -406,6 +558,7 @@
 		};
 		2E68328626C62F3300B7B3F9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
