@@ -128,8 +128,10 @@ extension API.NetworkClient {
     let target = MultiTarget(request)
 
     return self.provider.requestPublisher(target)
+      .subscribe(on: DispatchQueue.global(qos: .background))
+      .receive(on: DispatchQueue.global(qos: .background))
       .tryMap {
-        if self.hasValidRefreshToken {
+        if hasValidRefreshToken {
           throw SwsApiError.refreshTokenError
         }
 
@@ -141,6 +143,9 @@ extension API.NetworkClient {
         switch statusCode {
         case .ok:
           switch resultCode {
+          case .success:
+            break
+
           case .authError:
             throw SwsApiError.accessTokenError
 
@@ -157,71 +162,231 @@ extension API.NetworkClient {
 
         return $0
       }
-      .receive(on: DispatchQueue.global(qos: .background))
       .handleEvents(receiveCompletion: { completion in
         switch completion {
         case .finished:
           print("request success!")
 
+        case .failure(let error as SwsApiError):
+          self.requestErrorHandler(error, target: target)
+
         case .failure(let error):
           print(error.localizedDescription)
-
-        case .failure(let error as SwsApiError):
-          print(">>> SwsApiError", error)
-          switch error {
-          case .refreshTokenError:
-            print("refreshTokenError")
-
-          case .accessTokenError:
-            print("accessTokenError")
-
-          case .publicKeyError:
-            print("publicKeyError")
-          }
         }
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
 
+  // MARK: - requestErrorHandler
+  func requestErrorHandler(_ error: SwsApiError, target: MultiTarget) {
+    print(">>> SwsApiError", error)
+    switch error {
+    case .refreshTokenError:
+      print("refreshTokenError")
+
+    case .accessTokenError:
+      print("accessTokenError")
+
+    case .publicKeyError:
+      print("publicKeyError")
+    }
+  }
+
+  // MARK: - changeAccessToken
+
+  func changeAccessToken(target: MultiTarget) {
+    guard let refreshToken = try? KeyChain.getString("refreshToken") else { return }
+
+    var cancellables = Set<AnyCancellable>()
+
+    API.shared.request(ReqAPI.Token.accessToken(refreshToken))
+      .print()
+      .sink(receiveCompletion: { completion in
+        print(completion)
+      }, receiveValue: { response in
+        do {
+          let json = try response.mapJSON()
+          if let object = json as? [String: Any],
+             let jsonData = object["jsonData"] as? [String: Any],
+             let code = jsonData["code"] as? Int {
+
+            let statusCode = HTTPStatusCode(rawValue: code)
+
+            switch statusCode {
+            case .ok:
+              guard let code = jsonData["resultCode"] as? String else { return }
+              let resultCode = ResultCode(rawValue: code)
+
+              switch resultCode {
+              case .success:
+                if let accessToken = jsonData["accessToken"] as? String {
+                  try KeyChain.set(accessToken, key: "accessToken")
+                  print("changed accessToken:", accessToken)
+                  NotificationCenter.default.post(name: Notification.Name("updateAccessTokenEvent"), object: accessToken)
+
+                  _ = self.request(target)
+                }
+
+              default:
+                break
+              }
+
+            case .unauthorized:
+              print(#function, "unauthorized")
+            //self.changeRefreshToken(target: target)
+
+            default:
+              break
+            }
+          }
+        } catch let error {
+          print(error.localizedDescription)
+        }
+      }).store(in: &cancellables)
+  }
+
+  // MARK: - changeRefreshToken
+
+  func changeRefreshToken(target: MultiTarget) {
+    //Change Refresh Token
+    guard let refreshToken = try? KeyChain.getString("refreshToken") else { return }
+
+    var cancellables = Set<AnyCancellable>()
+
+    API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
+      .print()
+      .sink(receiveCompletion: { completion in
+        print(completion)
+      }, receiveValue: { response in
+        do {
+          let json = try response.mapJSON()
+
+          if let object = json as? [String: Any],
+             let jsonData = object["jsonData"] as? [String: Any],
+             let code = jsonData["code"] as? Int {
+
+            let statusCode = HTTPStatusCode(rawValue: code)
+
+            switch statusCode {
+            case .ok:
+              guard let code = jsonData["resultCode"] as? String else { return }
+              let resultCode = ResultCode(rawValue: code)
+
+              switch resultCode {
+              case .success:
+                if let refreshToken = jsonData["refreshToken"] as? String, let accessToken = jsonData["accessToken"] as? String {
+                  try KeyChain.set(refreshToken, key: "refreshToken")
+                  try KeyChain.set(accessToken, key: "accessToken")
+
+                  NotificationCenter.default.post(name: Notification.Name("updateAccessTokenEvent"), object: accessToken)
+
+                  print("changed refreshToken:", refreshToken, "changed accessToken:", accessToken)
+                  _ = self.request(target)
+                }
+
+              default:
+                break
+              }
+
+            case .unauthorized:
+              print(#function, "unauthorized")
+              do {
+                try KeyChain.remove("accessToken")
+                try KeyChain.remove("refreshToken")
+                //                    Settings.shared.setBool(.didLogin, value: false)
+                //                    Settings.shared.setBool(.autoLogin, value: false)
+                //
+                //                    alert(AppDelegate.topmost, "refresh token error", isCancelable: false)
+              } catch let error {
+                print("error: \(error)")
+              }
+
+            default:
+              break
+            }
+          }
+        } catch let error {
+          print(error.localizedDescription)
+        }
+      }).store(in: &cancellables)
+  }
+
+  // MARK: - changePublicKey
+
+  func changePublicKey(target: MultiTarget) {
+    //Change Public Key
+    var cancellables = Set<AnyCancellable>()
+
+    API.shared.request(ReqAPI.Auth.publickey())
+      .print()
+      .sink(receiveCompletion: { completion in
+        print(completion)
+      }, receiveValue: { response in
+        do {
+          let json = try response.mapJSON()
+          if let object = json as? [String: Any],
+             let resultData = object["jsonData"],
+             let jsonData = resultData as? [String: Any],
+             let res = jsonData["res"]  as? [String: Any],
+             let publicKey = res["publicKey"] as? String {
+            //save public key
+            try KeyChain.set(publicKey, key: "publicKey")
+            print("changed publicKey:", publicKey)
+
+            _ = self.request(target)
+          }
+        } catch let error {
+          print(error.localizedDescription)
+        }
+      }).store(in: &cancellables)
+  }
+
+  // MARK: - getPublicKey
+
   func getPublicKey() {
+    var cancellables = Set<AnyCancellable>()
 
-    _ = API.shared.request(ReqAPI.Auth.publickey())
-      .sink(receiveCompletion: {
-        print($0)
-      }, receiveValue: {
-        print($0)
+    API.shared.request(ReqAPI.Auth.publickey())
+      .print()
+      .sink(receiveCompletion: { completion in
+        print(completion)
+      }, receiveValue: { response in
+        do {
+          let json = try response.mapJSON()
+          if let object = json as? [String: Any],
+             let resultData = object["jsonData"],
+             let jsonData = resultData as? [String: Any],
+             let res = jsonData["res"]  as? [String: Any],
+             let publicKey = res["publicKey"] as? String {
+            //save public key
+            try KeyChain.set(publicKey, key: "publicKey")
+            print("new publicKey:", publicKey)
+          }
+        } catch let error {
+          print(error.localizedDescription)
+        }
       })
+      .store(in: &cancellables)
+  }
 
-    //      return API.shared.request(ReqAPI.Auth.publickey())
-    //        .print()
-    //        .receive(on: DispatchQueue.global(qos: .background))
-    ////        .handleEvents(receiveOutput: { ouput in
-    ////            print(ouput)
-    ////        }, receiveCompletion: { completion in
-    ////            print(completion)
-    ////        })
-    //        .eraseToAnyPublisher()
-    //        .subscribe(onSuccess: { response in
-    //          do {
-    //            let json = try response.mapJSON()
-    //            if let object = json as? [String: Any],
-    //               let resultData = object["jsonData"],
-    //               let jsonData = resultData as? [String: Any],
-    //               let res = jsonData["res"]  as? [String: Any],
-    //               let publicKey = res["publicKey"] as? String {
-    //              //save public key
-    //              try KeyChain.set(publicKey, key: "publicKey")
-    //              print("new publicKey:", publicKey)
-    //              single(.success(response))
-    //            }
-    //          } catch let error {
-    //            print(error.localizedDescription)
-    //            single(.error(error))
-    //          }
-    //        }) { error in
-    //          single(.error(error))
-    //        }
+  // encrypt with public key
+  // MARK: - encryptRsaString
+  func encryptRsaString(_ encodeStr: String) -> String? {
+    do {
+      let publickeyStr = try KeyChain.getString("publicKey")
+      guard let publickey = publickeyStr else { return nil }
 
+      let publicKey = try PublicKey(base64Encoded: publickey)
+
+      let clear = try ClearMessage(string: encodeStr, using: .utf8)
+      let encrypted = try clear.encrypted(with: publicKey, padding: .PKCS1)
+      let encrptedStr = Optional(encrypted.base64String)
+
+      return encrptedStr
+    } catch {
+      print(error)
+      return nil
+    }
   }
 }

@@ -13,7 +13,7 @@ extension ReqAPI {
   struct Token {
     static let basePath = "auth/"
     // accessToken
-    struct acessToken: ReqType {
+    struct accessToken: ReqType {
       var refreshToken: String
 
       var authorizationType: AuthorizationType? {
