@@ -20,7 +20,9 @@ struct ContentView: View {
 
   var body: some View {
     ZStack {
-
+      if viewModel.loading {
+        ActivityIndicator()
+      }
     }.onAppear {
       print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")

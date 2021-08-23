@@ -10,7 +10,7 @@ import Combine
 
 class ViewModel: ObservableObject {
   var cancellables = Set<AnyCancellable>()
-
+  @Published var loading = false
   func normalUserLogin(userId: String, password: String) {
     guard let pwdEncodeStr = API.shared.encryptRsaString(password) else { return }
 
@@ -18,8 +18,17 @@ class ViewModel: ObservableObject {
     let jsonEncodeData = try? Utils.encoder.encode(authLoginData)
     guard let jsonData = jsonEncodeData, let jsonString = String(data: jsonData, encoding: .utf8) else { return }
 
+    self.loading = true
+
     API.shared.request(ReqAPI.Auth.login(jsonString.toParams))
       .map { $0.data }
+//      .mapError({ (error) -> Error in
+//        print(error)
+//        DispatchQueue.main.async {
+//          self.loading = false
+//        }
+//        return error
+//      })
       .decode(type: LoginRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in
         print(completion)
@@ -29,6 +38,10 @@ class ViewModel: ObservableObject {
 
         case .failure(let error):
           print(error.localizedDescription)
+        }
+
+        DispatchQueue.main.async {
+          self.loading = false
         }
       }, receiveValue: { response in
         print(response)
