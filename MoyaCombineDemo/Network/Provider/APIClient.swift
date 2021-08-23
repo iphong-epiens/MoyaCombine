@@ -31,6 +31,16 @@ struct ResultCodeError: Error {
   }
 }
 
+class NetworkInfoNotificationSender {
+  var message: String
+
+  init(_ messageToSend: String) {
+    message = messageToSend
+  }
+
+  static let notification = Notification.Name("NetworkPopupNotification")
+}
+
 public class API: ObservableObject {
 
   public struct NetworkClient {
@@ -165,6 +175,8 @@ extension API.NetworkClient {
         switch completion {
         case .finished:
           print("request success!")
+          let sender = NetworkInfoNotificationSender("request success!")
+          NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
 
         case .failure(let error as SwsApiError):
           self.requestErrorHandler(error, target: target)

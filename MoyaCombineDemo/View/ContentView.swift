@@ -24,14 +24,6 @@ struct ContentView: View {
       Color.gray.ignoresSafeArea()
 
       VStack(spacing: 20) {
-        //        Text("Access Token:\n\n\(viewModel.accessToken)")
-        //          .foregroundColor(.blue)
-        //          .fontWeight(.bold)
-        //
-        //        Text("Refresh Token:\n\n\(viewModel.refreshToken)")
-        //          .foregroundColor(.red)
-        //          .fontWeight(.bold)
-
         Button("회원 정보") {
           viewModel.fetchUserData()
         }
@@ -64,7 +56,7 @@ struct ContentView: View {
         Text("userInfoError")
       }
     }.onAppear {
-      //      print(">>> settings.appList", settings.appList)
+      //print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
     }
   }

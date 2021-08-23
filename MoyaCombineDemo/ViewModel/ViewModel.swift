@@ -12,12 +12,20 @@ class ViewModel: ObservableObject {
   var cancellables = Set<AnyCancellable>()
 
   @Published var loading = false
-  @Published var accessToken: String = "---"
-  @Published var refreshToken: String = "---"
   @Published var authSysId: Int = 0
   @Published var userInfoError: Bool = false
   @Published var userInfo: String = ""
   @Published var profileImgUrl: String = ""
+
+  init() {
+    NotificationCenter.default.publisher(for: NetworkInfoNotificationSender.notification)
+      .compactMap {$0.object as? NetworkInfoNotificationSender}
+      .map {$0.message}
+      .sink { [weak self] message in
+        self?.handleNotification(message)
+      }
+      .store(in: &cancellables)
+  }
 
   func handleNotification(_ message: String) {
     print(message)
@@ -50,8 +58,6 @@ class ViewModel: ObservableObject {
       }, receiveValue: { response in
         print(response)
 
-        self.accessToken = response.jsonData.accessToken
-        self.refreshToken = response.jsonData.refreshToken
         self.authSysId = response.jsonData.authSysId
 
         do {
