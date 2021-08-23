@@ -370,6 +370,31 @@ extension API.NetworkClient {
       .store(in: &cancellables)
   }
 
+  func checkRSA(encodedStr: String) {
+    var cancellables = Set<AnyCancellable>()
+
+    let checkRSAData = ChkRsaReqData(rsaEncStr: encodedStr)
+    let jsonChkRSAEncodeData = try? Utils.encoder.encode(checkRSAData)
+    guard let jsonData = jsonChkRSAEncodeData, let jsonString = String(data: jsonData, encoding: .utf8) else { return }
+
+    API.shared.request(ReqAPI.Auth.chkrsa(jsonString.toParams))
+      .map { $0.data }
+      .decode(type: ChkRsaRespData.self, decoder: JSONDecoder())
+      .sink(receiveCompletion: { completion in
+        print(completion)
+        switch completion {
+        case .finished:
+          break
+
+        case .failure(let error):
+          print(error.localizedDescription)
+        }
+      }, receiveValue: { response in
+        print(response.jsonData.res.rsaDecStr)
+      })
+      .store(in: &cancellables)
+  }
+
   // encrypt with public key
   // MARK: - encryptRsaString
   func encryptRsaString(_ encodeStr: String) -> String? {

@@ -91,3 +91,11 @@ struct AccessTokenReqData: Codable {
     case authWayValue
   }
 }
+
+struct ChkRsaReqData: Codable {
+  let rsaEncStr: String
+
+  private enum CodingKeys: String, CodingKey {
+    case rsaEncStr
+  }
+}

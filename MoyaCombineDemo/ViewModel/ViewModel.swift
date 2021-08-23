@@ -25,7 +25,7 @@ class ViewModel: ObservableObject {
         print(completion)
         switch completion {
         case .finished:
-          print("finished")
+          break
 
         case .failure(let error):
           print(error.localizedDescription)

@@ -201,3 +201,29 @@ struct RefreshTokenRespData: Codable {
     case jsonData
   }
 }
+
+struct ChkRsaResultData: RespDataType {
+  var code: Int
+  var resultCode: String
+  var resultMsg: String?
+  var res: RsaDecData
+
+  private enum CodingKeys: String, CodingKey {
+    case code
+    case resultCode
+    case resultMsg
+    case res
+  }
+}
+
+struct RsaDecData: Codable {
+  let rsaDecStr: String
+}
+
+struct ChkRsaRespData: Codable {
+  let jsonData: ChkRsaResultData
+
+  private enum CodingKeys: String, CodingKey {
+    case jsonData
+  }
+}
