@@ -62,6 +62,7 @@ struct ContentView: View {
     .alert(isPresented: $viewModel.networkPopup) {
       Alert(title: Text("Title"), message: Text("Message"), primaryButton: .destructive(Text("\(viewModel.networkMsg)"), action: {
         // Some action
+        viewModel.networkPopup = false
       }), secondaryButton: .cancel())
     }
   }
