@@ -13,5 +13,5 @@ target 'MoyaCombineDemo' do
   pod 'SwiftyRSA'
   pod 'SwiftDate'
   pod 'SwiftLint'
-
+  pod 'ActivityIndicatorView'
 end

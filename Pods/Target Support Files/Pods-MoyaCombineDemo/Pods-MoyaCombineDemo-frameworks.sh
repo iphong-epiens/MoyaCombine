@@ -175,6 +175,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueRSA/CryptorRSA.framework"
@@ -189,6 +190,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueRSA/CryptorRSA.framework"

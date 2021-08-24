@@ -14,6 +14,7 @@ import CryptoSwift
 import JWTDecode
 import SwiftyRSA
 import Kingfisher
+import ActivityIndicatorView
 
 struct ContentView: View {
   @StateObject var viewModel = ViewModel()
@@ -48,21 +49,27 @@ struct ContentView: View {
         Spacer()
       }.padding()
 
-      if viewModel.loading {
-        ActivityIndicator()
-      }
+      //      if viewModel.loading {
+      //        ActivityIndicator()
+      //      }
 
       if viewModel.userInfoError {
         Text("userInfoError")
       }
+
+      ActivityIndicatorView(isVisible: $viewModel.networkLoading, type: .gradient([Color.gray, Color.black]))
+        .frame(width: 100, height: 100)
+        .foregroundColor(.black)
+
     }.onAppear {
       //print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
     }
+
     .alert(isPresented: $viewModel.networkPopup) {
       Alert(title: Text("Title"), message: Text("Message"), primaryButton: .destructive(Text("\(viewModel.networkMsg)"), action: {
         // Some action
-        viewModel.networkPopup = false
+        //viewModel.networkPopup = false
       }), secondaryButton: .cancel())
     }
   }

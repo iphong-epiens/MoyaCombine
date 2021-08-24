@@ -18,6 +18,7 @@ class ViewModel: ObservableObject {
   @Published var profileImgUrl: String = ""
   @Published var networkPopup: Bool = false
   @Published var networkMsg: String = ""
+  @Published var networkLoading: Bool = false
 
   init() {
     NotificationCenter.default.publisher(for: NetworkInfoNotificationSender.notification)
@@ -27,6 +28,16 @@ class ViewModel: ObservableObject {
       .sink {
         self.networkPopup = true
         self.networkMsg = $0
+      }
+      .store(in: &cancellables)
+
+    NotificationCenter.default.publisher(for: NetworkLoadingNotificationSender.notification)
+      .compactMap {$0.object as? NetworkLoadingNotificationSender}
+      .map {$0.loading}
+      .receive(on: DispatchQueue.main)
+      .sink {
+        print("networkLoading", self.networkLoading)
+        self.networkLoading = $0
       }
       .store(in: &cancellables)
   }

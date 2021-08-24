@@ -31,6 +31,16 @@ struct ResultCodeError: Error {
   }
 }
 
+class NetworkLoadingNotificationSender {
+  var loading: Bool
+
+  init(_ loadingToSend: Bool) {
+    loading = loadingToSend
+  }
+
+  static let notification = Notification.Name("NetworkLoadingNotification")
+}
+
 class NetworkInfoNotificationSender {
   var message: String
 
@@ -91,11 +101,12 @@ public class API: ObservableObject {
   static let shared: NetworkClient = {
     let networkClosure = {(_ change: NetworkActivityChangeType, _ target: TargetType) in
       DispatchQueue.main.async {
+
         switch change {
-        case .began: break
-        //HUD.show(.progress, onView: AppDelegate.root.view)
-        case .ended: break
-        //          HUD.hide(afterDelay: 1.0)
+        case .began:
+          API.shared.networkLoading(true)
+        case .ended:
+          API.shared.networkLoading(false)
         }
       }
     }
@@ -186,6 +197,11 @@ extension API.NetworkClient {
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
+  }
+
+  func networkLoading(_ loading: Bool) {
+    let sender = NetworkLoadingNotificationSender(loading)
+    NotificationCenter.default.post(name: NetworkLoadingNotificationSender.notification, object: sender)
   }
 
   func networkPopup(_ msg: String) {
