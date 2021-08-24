@@ -175,6 +175,7 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/APAlertView/APAlertView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
@@ -185,11 +186,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KituraContracts/KituraContracts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LoggerAPI/LoggerAPI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Logging/Logging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SPAlert/SPAlert.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftJWT/SwiftJWT.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/APAlertView/APAlertView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework"
@@ -200,6 +203,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KituraContracts/KituraContracts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/LoggerAPI/LoggerAPI.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Logging/Logging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SPAlert/SPAlert.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftJWT/SwiftJWT.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework"

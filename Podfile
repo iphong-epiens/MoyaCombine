@@ -6,12 +6,17 @@ target 'MoyaCombineDemo' do
   use_frameworks!
 
   # Pods for MoyaCombineDemo
+  pod 'SwiftDate'
+
   pod 'CryptoSwift'
   pod 'KeychainAccess'
   pod 'SwiftJWT'
   pod 'JWTDecode'
   pod 'SwiftyRSA'
-  pod 'SwiftDate'
-  pod 'SwiftLint'
+  
   pod 'ActivityIndicatorView'
+  pod 'APAlertView'
+  pod 'SPAlert'
+
+  pod 'SwiftLint'
 end
