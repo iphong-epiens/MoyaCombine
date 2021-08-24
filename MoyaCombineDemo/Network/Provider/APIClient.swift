@@ -31,26 +31,6 @@ struct ResultCodeError: Error {
   }
 }
 
-class NetworkLoadingNotificationSender {
-  var loading: Bool
-
-  init(_ loadingToSend: Bool) {
-    loading = loadingToSend
-  }
-
-  static let notification = Notification.Name("NetworkLoadingNotification")
-}
-
-class NetworkInfoNotificationSender {
-  var message: String
-
-  init(_ messageToSend: String) {
-    message = messageToSend
-  }
-
-  static let notification = Notification.Name("NetworkPopupNotification")
-}
-
 public class API: ObservableObject {
 
   public struct NetworkClient {
