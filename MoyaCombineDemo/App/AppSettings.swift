@@ -10,4 +10,12 @@ import Combine
 import KeychainAccess
 
 class AppSettings: ObservableObject {
+  var isLoggedIn: Bool {
+    get {
+      UserDefaults.standard.bool(forKey: "isLoggedIn")
+    }
+    set {
+      UserDefaults.standard.setValue(newValue, forKey: "isLoggedIn")
+    }
+  }
 }

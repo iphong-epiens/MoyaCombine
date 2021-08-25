@@ -20,6 +20,11 @@ struct MoyaCombineApp: App {
   @StateObject var settings: AppSettings = AppSettings()
   static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 
+  init() {
+    //refresh public key
+    API.shared.getPublicKey()
+  }
+
   var body: some Scene {
     WindowGroup {
       ContentView()

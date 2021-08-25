@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  HomeViewModel.swift
 //  MoyaCombineDemo
 //
 //  Created by Inpyo Hong on 2021/08/23.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ViewModel: ObservableObject {
+class HomeViewModel: ObservableObject {
   var cancellables = Set<AnyCancellable>()
 
   @Published var authSysId: Int = 0
