@@ -15,10 +15,16 @@ import JWTDecode
 import SwiftyRSA
 import Kingfisher
 import ActivityIndicatorView
+import SPAlert
 
 struct ContentView: View {
   @StateObject var viewModel = ViewModel()
   @EnvironmentObject private var settings: AppSettings
+
+  init() {
+    SPAlertConfiguration.duration = 2
+    SPAlertConfiguration.cornerRadius = 12
+  }
 
   var body: some View {
     ZStack {
@@ -61,13 +67,23 @@ struct ContentView: View {
       //print(">>> settings.appList", settings.appList)
       self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
     }
-
-    .alert(isPresented: $viewModel.networkPopup) {
-      Alert(title: Text("Title"), message: Text("Message"), primaryButton: .destructive(Text("\(viewModel.networkMsg)"), action: {
-        // Some action
-        //viewModel.networkPopup = false
-      }), secondaryButton: .cancel())
-    }
+    .spAlert(isPresent: $viewModel.networkPopup,
+             title: "Alert title",
+             message: "Alert message",
+             duration: 2.0,
+             dismissOnTap: false,
+             preset: .custom(UIImage(systemName: "heart")!),
+             haptic: .success,
+             layout: .init(),
+             completion: {
+              print("Alert is destory")
+             })
+    //    // https://seons-dev.tistory.com/27
+    //    .alert(isPresented: $viewModel.networkPopup) {
+    //      Alert(title: Text("Title"),
+    //            message: Text("Message"),
+    //            dismissButton: .default(Text("OK")))
+    //    }
   }
 }
 

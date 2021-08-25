@@ -11,7 +11,6 @@ import Combine
 class ViewModel: ObservableObject {
   var cancellables = Set<AnyCancellable>()
 
-  @Published var loading = false
   @Published var authSysId: Int = 0
   @Published var userInfoError: Bool = false
   @Published var userInfo: String = ""
@@ -49,8 +48,6 @@ class ViewModel: ObservableObject {
     let jsonEncodeData = try? Utils.encoder.encode(authLoginData)
     guard let jsonData = jsonEncodeData, let jsonString = String(data: jsonData, encoding: .utf8) else { return }
 
-    self.loading = true
-
     API.shared.request(ReqAPI.Auth.login(jsonString.toParams))
       .map { $0.data }
       .decode(type: LoginRespData.self, decoder: JSONDecoder())
@@ -62,9 +59,6 @@ class ViewModel: ObservableObject {
 
         default:
           break
-        }
-        DispatchQueue.main.async {
-          self.loading = false
         }
       }, receiveValue: { response in
         print(response)
@@ -93,8 +87,6 @@ class ViewModel: ObservableObject {
       return
     }
 
-    self.loading = true
-
     API.shared.request(ReqAPI.User.getUerInfo(accessToken: accessToken, userSysId: self.authSysId))
       .map { $0.data }
       .decode(type: UserInfoRespData.self, decoder: JSONDecoder())
@@ -106,9 +98,6 @@ class ViewModel: ObservableObject {
 
         default:
           break
-        }
-        DispatchQueue.main.async {
-          self.loading = false
         }
       }, receiveValue: { response in
         print(response.jsonData.userId)
