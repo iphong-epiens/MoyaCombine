@@ -15,7 +15,6 @@ target 'MoyaCombineDemo' do
   pod 'SwiftyRSA'
   
   pod 'ActivityIndicatorView'
-  pod 'APAlertView'
   pod 'SPAlert'
 
   pod 'SwiftLint'
