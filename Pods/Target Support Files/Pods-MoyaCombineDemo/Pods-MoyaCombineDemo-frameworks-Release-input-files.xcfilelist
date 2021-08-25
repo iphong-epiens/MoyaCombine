@@ -1,5 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo-frameworks.sh
-${BUILT_PRODUCTS_DIR}/APAlertView/APAlertView.framework
 ${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/BlueCryptor/Cryptor.framework
 ${BUILT_PRODUCTS_DIR}/BlueECC/CryptorECC.framework

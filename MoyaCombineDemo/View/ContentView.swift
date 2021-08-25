@@ -49,10 +49,6 @@ struct ContentView: View {
         Spacer()
       }.padding()
 
-      //      if viewModel.loading {
-      //        ActivityIndicator()
-      //      }
-
       if viewModel.userInfoError {
         Text("userInfoError")
       }

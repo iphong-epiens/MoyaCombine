@@ -1,6 +1,0 @@
-framework module APAlertView {
-  umbrella header "APAlertView-umbrella.h"
-
-  export *
-  module * { export * }
-}
