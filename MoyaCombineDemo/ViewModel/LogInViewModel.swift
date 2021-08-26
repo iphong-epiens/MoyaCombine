@@ -63,51 +63,16 @@ class LogInViewModel: ObservableObject {
       }, receiveValue: { response in
         print(response)
 
-        self.authSysId = response.jsonData.authSysId
-
         do {
           try KeyChain.set(response.jsonData.accessToken, key: "accessToken")
           try KeyChain.set(response.jsonData.refreshToken, key: "refreshToken")
+          try KeyChain.set("\(response.jsonData.authSysId)", key: "authSysId")
 
           UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
         } catch let error {
           print(error.localizedDescription)
         }
 
-        self.fetchUserData()
-      })
-      .store(in: &cancellables)
-  }
-
-  func fetchUserData() {
-    guard let accessToken = Utils.shared.accessToken, self.authSysId > 0 else {
-      return
-    }
-
-    guard self.authSysId > 0 else {
-      self.userInfoError = true
-      return
-    }
-
-    API.shared.request(ReqAPI.User.getUerInfo(accessToken: accessToken, userSysId: self.authSysId))
-      .map { $0.data }
-      .decode(type: UserInfoRespData.self, decoder: JSONDecoder())
-      .sink(receiveCompletion: { completion in
-        print(completion)
-        switch completion {
-        case .failure(let error):
-          print(error.localizedDescription)
-
-        default:
-          break
-        }
-      }, receiveValue: { response in
-        print(response.jsonData.userId)
-        print(response.jsonData.name ?? "")
-        print(response.jsonData.nickName ?? "")
-
-        self.userInfo = "\(response.jsonData.userId)\n\(response.jsonData.name ?? "")\n\(response.jsonData.nickName ?? "")"
-        self.profileImgUrl = response.jsonData.profileImgUrl ?? ""
       })
       .store(in: &cancellables)
   }

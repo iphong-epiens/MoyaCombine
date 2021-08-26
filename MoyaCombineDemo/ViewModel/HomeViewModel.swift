@@ -41,53 +41,12 @@ class HomeViewModel: ObservableObject {
       .store(in: &cancellables)
   }
 
-  func normalUserLogin(userId: String, password: String) {
-    guard let pwdEncodeStr = API.shared.encryptRsaString(password) else { return }
-
-    let authLoginData = LoginReqData(userId: userId, password: pwdEncodeStr)
-    let jsonEncodeData = try? Utils.encoder.encode(authLoginData)
-    guard let jsonData = jsonEncodeData, let jsonString = String(data: jsonData, encoding: .utf8) else { return }
-
-    API.shared.request(ReqAPI.Auth.login(jsonString.toParams))
-      .map { $0.data }
-      .decode(type: LoginRespData.self, decoder: JSONDecoder())
-      .sink(receiveCompletion: { completion in
-        print(completion)
-        switch completion {
-        case .failure(let error):
-          print(error.localizedDescription)
-
-        default:
-          break
-        }
-      }, receiveValue: { response in
-        print(response)
-
-        self.authSysId = response.jsonData.authSysId
-
-        do {
-          try KeyChain.set(response.jsonData.accessToken, key: "accessToken")
-          try KeyChain.set(response.jsonData.refreshToken, key: "refreshToken")
-        } catch let error {
-          print(error.localizedDescription)
-        }
-
-        self.fetchUserData()
-      })
-      .store(in: &cancellables)
-  }
-
   func fetchUserData() {
-    guard let accessToken = Utils.shared.accessToken, self.authSysId > 0 else {
+    guard let accessToken = Utils.shared.accessToken, let authSysId = Utils.shared.authSysId else {
       return
     }
 
-    guard self.authSysId > 0 else {
-      self.userInfoError = true
-      return
-    }
-
-    API.shared.request(ReqAPI.User.getUerInfo(accessToken: accessToken, userSysId: self.authSysId))
+    API.shared.request(ReqAPI.User.getUerInfo(accessToken: accessToken, userSysId: authSysId))
       .map { $0.data }
       .decode(type: UserInfoRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in
@@ -108,5 +67,16 @@ class HomeViewModel: ObservableObject {
         self.profileImgUrl = response.jsonData.profileImgUrl ?? ""
       })
       .store(in: &cancellables)
+  }
+
+  func logOut() {
+    do {
+      try KeyChain.remove("accessToken")
+      try KeyChain.remove("refreshToken")
+      try KeyChain.remove("authSysId")
+      UserDefaults.standard.set(false, forKey: "isLoggedIn")
+    } catch let error {
+      print("logOut error: \(error)")
+    }
   }
 }

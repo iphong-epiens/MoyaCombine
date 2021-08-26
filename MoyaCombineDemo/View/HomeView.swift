@@ -57,13 +57,7 @@ struct HomeView: View {
 
         if settings.isLoggedIn {
           Button(action: {
-            settings.isLoggedIn = false
-            do {
-              try KeyChain.remove("accessToken")
-              try KeyChain.remove("refreshToken")
-            } catch let error {
-              print("error: \(error)")
-            }
+            viewModel.logOut()
           }) {
             Text("로그아웃")
           }
@@ -81,23 +75,22 @@ struct HomeView: View {
         .foregroundColor(.black)
     }
     .onAppear {
-      self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
+      self.viewModel.fetchUserData()
     }
-    .spAlert(isPresent: $viewModel.networkPopup,
-             title: "Alert title",
-             message: "Alert message",
-             duration: 2.0,
-             dismissOnTap: false,
-             preset: .custom(UIImage(systemName: "heart")!),
-             haptic: .success,
-             layout: .init(),
-             completion: {
-              print("Alert is destory")
-             })
+    //    .spAlert(isPresent: $viewModel.networkPopup,
+    //             title: "Alert title",
+    //             message: "Alert message",
+    //             duration: 2.0,
+    //             dismissOnTap: false,
+    //             preset: .custom(UIImage(systemName: "heart")!),
+    //             haptic: .success,
+    //             layout: .init(),
+    //             completion: {
+    //              print("Alert is destory")
+    //             })
     // https://seons-dev.tistory.com/27
     .alert(isPresented: $viewModel.networkPopup) {
-      Alert(title: Text("Title"),
-            message: Text("Message"),
+      Alert(title: Text(viewModel.networkMsg),
             dismissButton: .default(Text("OK")))
     }
   }

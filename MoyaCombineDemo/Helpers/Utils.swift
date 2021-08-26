@@ -18,6 +18,11 @@ class Utils {
     return accessToken
   }
 
+  var authSysId: Int? {
+    guard let authSysId = try? KeyChain.getString("authSysId"), let authSysId = Int(authSysId)  else { return  nil }
+    return authSysId
+  }
+
   static var encoder: JSONEncoder {
     let encoder = JSONEncoder()
     encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
