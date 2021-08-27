@@ -43,11 +43,8 @@ struct LogInView: View {
     //             })
 
     // https://seons-dev.tistory.com/27
-    .alert(isPresented: $viewModel.networkPopup) {
-      Alert(title: Text("Title"),
-            message: Text(viewModel.networkMsg),
-            dismissButton: .default(Text("OK")))
-    }
+    .popupView(draw: $viewModel.networkPopup, title: $viewModel.networkMsg)
+
   }
 }
 

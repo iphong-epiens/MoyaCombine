@@ -25,11 +25,7 @@ struct ContentView: View {
         .frame(width: 100, height: 100)
         .foregroundColor(.black)
     }
-    .alert(isPresented: $viewModel.networkPopup) {
-      Alert(title: Text("Title"),
-            message: Text(viewModel.networkMsg),
-            dismissButton: .default(Text("OK")))
-    }
+    .popupView(draw: $viewModel.networkPopup, title: $viewModel.networkMsg)
   }
 }
 
