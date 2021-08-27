@@ -200,45 +200,13 @@ extension API.NetworkClient {
         }
       })
       .handleEvents(receiveOutput: { response in
-        print(response)
         if let resultData = try? response.map(AccessTokenRespData.self) {
           print(">>> fetchAccessToken resultData", resultData)
-        }
-
-        do {
-          let json = try response.mapJSON()
-          if let object = json as? [String: Any],
-             let jsonData = object["jsonData"] as? [String: Any],
-             let code = jsonData["code"] as? Int {
-
-            let statusCode = HTTPStatusCode(rawValue: code)
-
-            switch statusCode {
-            case .ok:
-              guard let code = jsonData["resultCode"] as? String else { return }
-              let resultCode = ResultCode(rawValue: code)
-
-              switch resultCode {
-              case .success:
-                if let accessToken = jsonData["accessToken"] as? String {
-                  try KeyChain.set(accessToken, key: "accessToken")
-                  print("changed accessToken:", accessToken)
-                }
-
-              default:
-                break
-              }
-
-            case .unauthorized:
-              print(#function, "unauthorized")
-              _ = self.fetchRefreshToken(target: target)
-
-            default:
-              break
-            }
+          do {
+            try KeyChain.set(resultData.jsonData.accessToken, key: "accessToken")
+          } catch let error {
+            print(error.localizedDescription)
           }
-        } catch let error {
-          print(error.localizedDescription)
         }
       }, receiveCompletion: { completion in
         print(completion)
