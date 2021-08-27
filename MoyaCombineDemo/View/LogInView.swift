@@ -41,21 +41,21 @@ struct LogInView: View {
         .frame(width: 100, height: 100)
         .foregroundColor(.black)
     }
-    .spAlert(isPresent: $viewModel.networkPopup,
-             title: "Alert title",
-             message: "Alert message",
-             duration: 2.0,
-             dismissOnTap: false,
-             preset: .custom(UIImage(systemName: "heart")!),
-             haptic: .success,
-             layout: .init(),
-             completion: {
-              print("Alert is destory")
-             })
+    //    .spAlert(isPresent: $viewModel.networkPopup,
+    //             title: "Alert title",
+    //             message: "Alert message",
+    //             duration: 2.0,
+    //             dismissOnTap: false,
+    //             preset: .custom(UIImage(systemName: "heart")!),
+    //             haptic: .success,
+    //             layout: .init(),
+    //             completion: {
+    //              print("Alert is destory")
+    //             })
     // https://seons-dev.tistory.com/27
     .alert(isPresented: $viewModel.networkPopup) {
       Alert(title: Text("Title"),
-            message: Text("Message"),
+            message: Text(viewModel.networkMsg),
             dismissButton: .default(Text("OK")))
     }
   }

@@ -18,14 +18,26 @@ import ActivityIndicatorView
 import SPAlert
 
 struct ContentView: View {
+  @StateObject var viewModel = ContentViewModel()
   @EnvironmentObject private var settings: AppSettings
   @AppStorage("isLoggedIn") var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "isLoggedIn")
 
   var body: some View {
-    if isLoggedIn {
-      HomeView()
-    } else {
-      LogInView()
+    ZStack {
+      if isLoggedIn {
+        HomeView()
+      } else {
+        LogInView()
+      }
+
+      ActivityIndicatorView(isVisible: $viewModel.networkLoading, type: .gradient([Color.gray, Color.black]))
+        .frame(width: 100, height: 100)
+        .foregroundColor(.black)
+    }
+    .alert(isPresented: $viewModel.networkPopup) {
+      Alert(title: Text("Title"),
+            message: Text(viewModel.networkMsg),
+            dismissButton: .default(Text("OK")))
     }
   }
 }

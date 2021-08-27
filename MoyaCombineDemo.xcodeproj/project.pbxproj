@@ -45,6 +45,8 @@
 		2E6D983926D60FE700380024 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D983726D60FE700380024 /* HomeViewModel.swift */; };
 		2E6D983C26D6103400380024 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D983A26D6103400380024 /* HomeView.swift */; };
 		2E6D983D26D6103400380024 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D983B26D6103400380024 /* LogInView.swift */; };
+		2E6D98D226D8B5C600380024 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D126D8B5C600380024 /* BaseViewModel.swift */; };
+		2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D326D8B67C00380024 /* ContentViewModel.swift */; };
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		2E6D983726D60FE700380024 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2E6D983A26D6103400380024 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2E6D983B26D6103400380024 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		2E6D98D126D8B5C600380024 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		2E6D98D326D8B67C00380024 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			children = (
 				2E6D983726D60FE700380024 /* HomeViewModel.swift */,
 				2E6D983626D60FE700380024 /* LogInViewModel.swift */,
+				2E6D98D126D8B5C600380024 /* BaseViewModel.swift */,
+				2E6D98D326D8B67C00380024 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -446,9 +452,11 @@
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
 				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
 				2E466E9026D385C60059C7D8 /* ActivityIndicator.swift in Sources */,
+				2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */,
 				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
 				2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */,
 				2E68327926C62F3200B7B3F9 /* MoyaCombineApp.swift in Sources */,
+				2E6D98D226D8B5C600380024 /* BaseViewModel.swift in Sources */,
 				2E6833EF26CA67B300B7B3F9 /* AuthAPI.swift in Sources */,
 				2E68329A26C6448000B7B3F9 /* Date+ISO8601.swift in Sources */,
 				2E68341926CF552E00B7B3F9 /* AppSettings.swift in Sources */,
