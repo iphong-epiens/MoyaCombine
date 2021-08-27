@@ -21,16 +21,7 @@ struct MoyaCombineApp: App {
   static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 
   init() {
-    //refresh public key
-    //API.shared.getPublicKey()
-
-    do {
-      try KeyChain.set("accessToken", key: "accessToken")
-      // try KeyChain.set("refreshToken", key: "refreshToken")
-
-    } catch let error {
-      print(error.localizedDescription)
-    }
+    API.shared.updateRefreshToken()
   }
 
   var body: some Scene {

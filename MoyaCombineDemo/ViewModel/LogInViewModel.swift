@@ -69,6 +69,10 @@ class LogInViewModel: ObservableObject {
           try KeyChain.set("\(response.jsonData.authSysId)", key: "authSysId")
 
           UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
+
+          //로그인 후 퍼블릭 키 갱신
+          API.shared.getPublicKey()
+
         } catch let error {
           print(error.localizedDescription)
         }

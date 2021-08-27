@@ -33,6 +33,7 @@ struct ResultCodeError: Error {
 
 public class API: ObservableObject {
   public var target: MultiTarget?
+  let tokenUpdateIntervalDay = 3
   public struct NetworkClient {
     public var token: String? // We should persist this value
 
@@ -43,12 +44,15 @@ public class API: ObservableObject {
     var lastTokenDate: Date?
     var cache = [String: Any]()
 
-    public var hasValidRefreshToken: Bool {
+    public var tokenIsValid: Bool {
       //        if !Settings.shared.getBool(.didLogin) { return false }
       guard let tokenExpireDate = lastTokenDate else { return false }
 
+      //refresh token 만료 시점에서 몇일전에 refresh token을 업데이트할지 설정
+      let updateIntervalDay: TimeInterval = 7
+
       // Refresh Token 만료일자 보다 14일 이전 날짜 계산
-      let updateDate = Date(timeInterval: -86400*14, since: tokenExpireDate)
+      let updateDate = Date(timeInterval: -86400*updateIntervalDay, since: tokenExpireDate)
       print("updateDate", updateDate)
 
       //업데이트 날짜가 현재 날짜보다 미래인지 체크
@@ -57,7 +61,7 @@ public class API: ObservableObject {
       let daysInterval = floor(interval/86400)
       print("refresh token next update remains of", Int(daysInterval), "day")
 
-      return interval < 0 ? true : false
+      return interval < 0 ? false : true
     }
 
     init(provider: MoyaProvider<MultiTarget>) {
@@ -131,19 +135,14 @@ extension API.NetworkClient {
       .subscribe(on: DispatchQueue.global(qos: .background))
       .receive(on: DispatchQueue.global(qos: .background))
       .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
-        if let response = error.response {
-          let statusCode = HTTPStatusCode(rawValue: response.statusCode)
-          switch statusCode {
-          // access token error
-          case .unauthorized:
-            print(">>> access token error")
-            return API.shared.fetchAccessToken(target: target)
-
-          default:
-            break
-          }
+        // 401 Error, update access token
+        guard let response = error.response,
+              let statusCode = HTTPStatusCode(rawValue: response.statusCode),
+              statusCode != .unauthorized else {
+          return self.fetchAccessToken(target: target)
         }
-        return API.shared.request(target)
+
+        throw error
       })
       .handleEvents(receiveOutput: { response in
         print(response.statusCode)
@@ -184,19 +183,18 @@ extension API.NetworkClient {
 
   // MARK: - fetchAccessToken
   func fetchAccessToken(target: MultiTarget) -> AnyPublisher<Moya.Response, Error> {
-
     API.shared.request(ReqAPI.Token.accessToken(Utils.shared.refreshToken ?? ""))
       .tryMap({
         if $0.statusCode == 401 {
-          throw SwsApiError.refreshTokenError
+          throw SwsApiError.accessTokenError
         }
         return $0
       })
       .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
         if let error = error as? SwsApiError, error == SwsApiError.refreshTokenError {
-          return self.fetchRefreshToken(target: target)
-        } else {
           throw SwsApiError.accessTokenError
+        } else {
+          throw error
         }
       })
       .handleEvents(receiveOutput: { response in
@@ -204,6 +202,7 @@ extension API.NetworkClient {
           print(">>> fetchAccessToken resultData", resultData)
           do {
             try KeyChain.set(resultData.jsonData.accessToken, key: "accessToken")
+            try KeyChain.set("\(resultData.jsonData.authSysId)", key: "authSysId")
           } catch let error {
             print(error.localizedDescription)
           }
@@ -212,80 +211,17 @@ extension API.NetworkClient {
         print(completion)
         switch completion {
         case .failure(let error):
-          print(error)
-
-        case .finished:
-          break
-        }
-      })
-      .flatMap { _ in
-        //retry actual request
-        self.request(target)
-      }
-      .eraseToAnyPublisher()
-  }
-
-  // MARK: - changeRefreshToken
-
-  func fetchRefreshToken(target: MultiTarget) -> AnyPublisher<Moya.Response, Error> {
-    //fetchRefreshToken
-    API.shared.request(ReqAPI.Token.refreshToken(Utils.shared.refreshToken ?? ""))
-      .tryMap({
-        if $0.statusCode == 401 {
-          throw SwsApiError.refreshTokenError
-        }
-        return $0
-      })
-      .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
-        if let error = error as? SwsApiError, error == SwsApiError.refreshTokenError {
-          return self.fetchRefreshToken(target: target)
-        } else {
-          throw SwsApiError.refreshTokenError
-        }
-      })
-      .handleEvents(receiveOutput: { response in
-        do {
-          if let resultData = try? response.map(RefreshTokenRespData.self) {
-            print(">>> fetchRefreshToken resultData", resultData)
-          }
-
-          let json = try response.mapJSON()
-
-          if let object = json as? [String: Any],
-             let jsonData = object["jsonData"] as? [String: Any],
-             let code = jsonData["code"] as? Int {
-
-            let statusCode = HTTPStatusCode(rawValue: code)
-
-            switch statusCode {
-            case .ok:
-              guard let code = jsonData["resultCode"] as? String else { return }
-              let resultCode = ResultCode(rawValue: code)
-
-              switch resultCode {
-              case .success:
-                if let refreshToken = jsonData["refreshToken"] as? String, let accessToken = jsonData["accessToken"] as? String {
-                  try KeyChain.set(refreshToken, key: "refreshToken")
-                  try KeyChain.set(accessToken, key: "accessToken")
-
-                  NotificationCenter.default.post(name: Notification.Name("updateAccessTokenEvent"), object: accessToken)
-                  print("changed refreshToken:", refreshToken, "changed accessToken:", accessToken)
-                }
-
-              default:
-                break
-              }
-
-            case .unauthorized:
-              print(#function, "unauthorized")
+          if let error = error as? SwsApiError {
+            switch error {
+            case .accessTokenError:
               do {
                 try KeyChain.remove("accessToken")
                 try KeyChain.remove("refreshToken")
 
-                API.shared.networkPopup("refresh token error")
-
                 // go login menu
                 UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+
+                API.shared.networkPopup("refresh token error")
               } catch let error {
                 print("error: \(error)")
               }
@@ -294,13 +230,6 @@ extension API.NetworkClient {
               break
             }
           }
-        } catch let error {
-          print(error.localizedDescription)
-        }
-      }, receiveCompletion: { completion in
-        switch completion {
-        case .failure(let error):
-          print(error)
 
         case .finished:
           break
@@ -313,69 +242,51 @@ extension API.NetworkClient {
       .eraseToAnyPublisher()
   }
 
-  //  func changeRefreshToken(target: MultiTarget) {
-  //    //Change Refresh Token
-  //    guard let refreshToken = try? KeyChain.getString("refreshToken") else { return }
-  //
-  //    var cancellables = Set<AnyCancellable>()
-  //
-  //    API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
-  //      .print()
-  //      .sink(receiveCompletion: { completion in
-  //        print(completion)
-  //      }, receiveValue: { response in
-  //        do {
-  //          let json = try response.mapJSON()
-  //
-  //          if let object = json as? [String: Any],
-  //             let jsonData = object["jsonData"] as? [String: Any],
-  //             let code = jsonData["code"] as? Int {
-  //
-  //            let statusCode = HTTPStatusCode(rawValue: code)
-  //
-  //            switch statusCode {
-  //            case .ok:
-  //              guard let code = jsonData["resultCode"] as? String else { return }
-  //              let resultCode = ResultCode(rawValue: code)
-  //
-  //              switch resultCode {
-  //              case .success:
-  //                if let refreshToken = jsonData["refreshToken"] as? String, let accessToken = jsonData["accessToken"] as? String {
-  //                  try KeyChain.set(refreshToken, key: "refreshToken")
-  //                  try KeyChain.set(accessToken, key: "accessToken")
-  //
-  //                  NotificationCenter.default.post(name: Notification.Name("updateAccessTokenEvent"), object: accessToken)
-  //
-  //                  print("changed refreshToken:", refreshToken, "changed accessToken:", accessToken)
-  //                  _ = self.request(target)
-  //                }
-  //
-  //              default:
-  //                break
-  //              }
-  //
-  //            case .unauthorized:
-  //              print(#function, "unauthorized")
-  //              do {
-  //                try KeyChain.remove("accessToken")
-  //                try KeyChain.remove("refreshToken")
-  //                //                    Settings.shared.setBool(.didLogin, value: false)
-  //                //                    Settings.shared.setBool(.autoLogin, value: false)
-  //                //
-  //                //                    alert(AppDelegate.topmost, "refresh token error", isCancelable: false)
-  //              } catch let error {
-  //                print("error: \(error)")
-  //              }
-  //
-  //            default:
-  //              break
-  //            }
-  //          }
-  //        } catch let error {
-  //          print(error.localizedDescription)
-  //        }
-  //      }).store(in: &cancellables)
-  //  }
+  // MARK: - updateRefreshToken
+
+  func updateRefreshToken() {
+    guard let refreshToken = try? KeyChain.getString("refreshToken"),
+          !API.shared.tokenIsValid else { return }
+
+    var cancellables = Set<AnyCancellable>()
+
+    API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
+      .sink(receiveCompletion: { completion in
+        switch completion {
+        case .failure(let error):
+          print(error.localizedDescription)
+
+          do {
+            try KeyChain.remove("accessToken")
+            try KeyChain.remove("refreshToken")
+
+            API.shared.networkPopup("refresh token error")
+
+            // go login menu
+            UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
+          } catch let error {
+            print("error: \(error)")
+          }
+
+        case .finished:
+          break
+        }
+      }, receiveValue: { response in
+        do {
+          if let resultData = try? response.map(RefreshTokenRespData.self) {
+            print(">>> updateRefreshToken resultData", resultData)
+
+            try KeyChain.set(resultData.jsonData.accessToken, key: "accessToken")
+            try KeyChain.set(resultData.jsonData.refreshToken, key: "refreshToken")
+            try KeyChain.set("\(resultData.jsonData.authSysId)", key: "authSysId")
+
+            print("changed refreshToken:", resultData.jsonData.refreshToken, "changed accessToken:", resultData.jsonData.accessToken, "authSysId", resultData.jsonData.authSysId)
+          }
+        } catch let error {
+          print(error.localizedDescription)
+        }
+      }).store(in: &cancellables)
+  }
 
   // MARK: - changePublicKey
 

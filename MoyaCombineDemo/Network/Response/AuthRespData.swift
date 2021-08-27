@@ -183,6 +183,7 @@ struct RefreshTokenResultData: RespDataType {
   var resultCode: String
   var resultMsg: String?
   var authSysId: Int
+  var accessToken: String
   var refreshToken: String
 
   private enum CodingKeys: String, CodingKey {
@@ -190,6 +191,7 @@ struct RefreshTokenResultData: RespDataType {
     case resultCode
     case resultMsg
     case authSysId
+    case accessToken
     case refreshToken
   }
 }
