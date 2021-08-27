@@ -1,24 +1,9 @@
 PODS:
   - ActivityIndicatorView (0.0.7)
-  - BlueCryptor (1.0.32)
-  - BlueECC (1.2.5)
-  - BlueRSA (1.0.34)
-  - CryptoSwift (1.4.1)
   - JWTDecode (2.6.2)
   - KeychainAccess (4.2.2)
-  - KituraContracts (1.2.1):
-    - LoggerAPI (~> 1.7)
-  - LoggerAPI (1.9.200):
-    - Logging (~> 1.1)
-  - Logging (1.4.0)
   - SPAlert (3.3.1)
   - SwiftDate (6.3.1)
-  - SwiftJWT (3.6.200):
-    - BlueCryptor (~> 1.0)
-    - BlueECC (~> 1.1)
-    - BlueRSA (~> 1.0)
-    - KituraContracts (~> 1.2)
-    - LoggerAPI (~> 1.7)
   - SwiftLint (0.43.1)
   - SwiftyRSA (1.7.0):
     - SwiftyRSA/ObjC (= 1.7.0)
@@ -26,50 +11,32 @@ PODS:
 
 DEPENDENCIES:
   - ActivityIndicatorView
-  - CryptoSwift
   - JWTDecode
   - KeychainAccess
   - SPAlert
   - SwiftDate
-  - SwiftJWT
   - SwiftLint
   - SwiftyRSA
 
 SPEC REPOS:
   trunk:
     - ActivityIndicatorView
-    - BlueCryptor
-    - BlueECC
-    - BlueRSA
-    - CryptoSwift
     - JWTDecode
     - KeychainAccess
-    - KituraContracts
-    - LoggerAPI
-    - Logging
     - SPAlert
     - SwiftDate
-    - SwiftJWT
     - SwiftLint
     - SwiftyRSA
 
 SPEC CHECKSUMS:
   ActivityIndicatorView: 38c6cc1668e667f0fe0896a0c6ca2315c667ee8f
-  BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
-  BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
-  BlueRSA: 6f9776d62d9773502415a7db3bcbb2bbb3f71fc3
-  CryptoSwift: 0bc800a7e6a24c4fc9ebeab97d44b0d5f73a78bd
   JWTDecode: 2cc56f950540c95fd11b14ff6388f7c6cb9760ab
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
-  LoggerAPI: ad9c4a6f1e32f518fdb43a1347ac14d765ab5e3d
-  Logging: beeb016c9c80cf77042d62e83495816847ef108b
   SPAlert: 7028b585168153d9619192d4debe060b25071b0f
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
-  SwiftJWT: 88c412708f58c169d431d344c87bc79a87c830ae
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
 
-PODFILE CHECKSUM: b525b18a8c5de18df8ad3e7713c2794e7b897fa3
+PODFILE CHECKSUM: e8539dc2409a6b00ee560d08ac037d9f023bee56
 
 COCOAPODS: 1.10.1

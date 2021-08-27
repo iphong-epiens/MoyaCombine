@@ -8,9 +8,7 @@ target 'MoyaCombineDemo' do
   # Pods for MoyaCombineDemo
   pod 'SwiftDate'
 
-  pod 'CryptoSwift'
   pod 'KeychainAccess'
-  pod 'SwiftJWT'
   pod 'JWTDecode'
   pod 'SwiftyRSA'
   
