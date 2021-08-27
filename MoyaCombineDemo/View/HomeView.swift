@@ -79,11 +79,6 @@ struct HomeView: View {
     //             completion: {
     //              print("Alert is destory")
     //             })
-    // https://seons-dev.tistory.com/27
-    //    .alert(isPresented: $viewModel.networkPopup) {
-    //      Alert(title: Text(viewModel.networkMsg),
-    //            dismissButton: .default(Text("OK")))
-    //    }
     .popupView(draw: $viewModel.networkPopup, title: $viewModel.networkMsg)
   }
 }
