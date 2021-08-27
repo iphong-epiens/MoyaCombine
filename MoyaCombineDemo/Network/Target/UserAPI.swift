@@ -95,18 +95,18 @@ extension ReqAPI {
     }
 
     struct getUerInfo: ReqType {
-      var accessToken: String
+      //      var accessToken: String
       var userSysId: Int
 
       var authorizationType: AuthorizationType? {
-        return .none
+        return .bearer
       }
 
-      var headers: [String: String]? {
-        var httpHeaders: [String: String] = [:]
-        httpHeaders["Authorization"] = "Bearer " + self.accessToken
-        return httpHeaders
-      }
+      //      var headers: [String: String]? {
+      //        var httpHeaders: [String: String] = [:]
+      //        httpHeaders["Authorization"] = "Bearer " + self.accessToken
+      //        return httpHeaders
+      //      }
 
       var path: String { basePath + "\(userSysId)" }
 
@@ -115,8 +115,8 @@ extension ReqAPI {
         return .requestPlain
       }
 
-      init(accessToken: String, userSysId: Int) {
-        self.accessToken = accessToken
+      init(userSysId: Int) {
+        //        self.accessToken = accessToken
         self.userSysId = userSysId
       }
 

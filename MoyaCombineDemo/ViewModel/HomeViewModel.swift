@@ -42,11 +42,11 @@ class HomeViewModel: ObservableObject {
   }
 
   func fetchUserData() {
-    guard let accessToken = Utils.shared.accessToken, let authSysId = Utils.shared.authSysId else {
+    guard let authSysId = Utils.shared.authSysId else {
       return
     }
 
-    API.shared.request(ReqAPI.User.getUerInfo(accessToken: accessToken, userSysId: authSysId))
+    API.shared.request(ReqAPI.User.getUerInfo(userSysId: authSysId))
       .map { $0.data }
       .decode(type: UserInfoRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in

@@ -18,6 +18,11 @@ class Utils {
     return accessToken
   }
 
+  var refreshToken: String? {
+    guard let refreshToken = try? KeyChain.getString("refreshToken") else { return  nil }
+    return refreshToken
+  }
+
   var authSysId: Int? {
     guard let authSysId = try? KeyChain.getString("authSysId"), let authSysId = Int(authSysId)  else { return  nil }
     return authSysId

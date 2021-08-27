@@ -22,7 +22,15 @@ struct MoyaCombineApp: App {
 
   init() {
     //refresh public key
-    API.shared.getPublicKey()
+    //API.shared.getPublicKey()
+
+    do {
+      try KeyChain.set("accessToken", key: "accessToken")
+      // try KeyChain.set("refreshToken", key: "refreshToken")
+
+    } catch let error {
+      print(error.localizedDescription)
+    }
   }
 
   var body: some Scene {
