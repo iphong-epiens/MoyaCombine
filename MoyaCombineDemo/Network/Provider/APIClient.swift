@@ -48,7 +48,8 @@ public class API: ObservableObject {
       guard let tokenExpireDate = lastTokenDate else { return false }
 
       //refresh token 만료 시점에서 몇일전에 refresh token을 업데이트할지 설정
-      let updateIntervalDay: TimeInterval = 7
+      //refresh token 4주 후 종료되며, 50% 남은 2주 후 업데이트 한다.
+      let updateIntervalDay: TimeInterval = 14
 
       // Refresh Token 만료일자 보다 14일 이전 날짜 계산
       let updateDate = Date(timeInterval: -86400*updateIntervalDay, since: tokenExpireDate)
@@ -60,7 +61,7 @@ public class API: ObservableObject {
       let daysInterval = floor(interval/86400)
       print("refresh token next update remains of", Int(daysInterval), "day")
 
-      return interval < 0 ? false : true
+      return interval > 0 ? true : false
     }
 
     init(provider: MoyaProvider<MultiTarget>) {
@@ -147,6 +148,7 @@ extension API.NetworkClient {
         print(response.statusCode)
       }, receiveCompletion: { completion in
         print(completion)
+        API.shared.updateRefreshToken()
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
