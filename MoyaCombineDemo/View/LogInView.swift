@@ -6,14 +6,6 @@
 //
 
 import SwiftUI
-import Combine
-import CombineMoya
-import Moya
-import KeychainAccess
-import CryptoSwift
-import JWTDecode
-import SwiftyRSA
-import Kingfisher
 import ActivityIndicatorView
 import SPAlert
 
@@ -23,10 +15,7 @@ struct LogInView: View {
   @AppStorage("isLoggedIn") var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "isLoggedIn")
 
   var body: some View {
-
-    ZStack {
-      Color.gray.ignoresSafeArea()
-
+    BaseView {
       Button(action: {
         self.viewModel.normalUserLogin(userId: "y2kpaulh@epiens.com", password: "test123")
       }) {
@@ -52,6 +41,7 @@ struct LogInView: View {
     //             completion: {
     //              print("Alert is destory")
     //             })
+
     // https://seons-dev.tistory.com/27
     .alert(isPresented: $viewModel.networkPopup) {
       Alert(title: Text("Title"),

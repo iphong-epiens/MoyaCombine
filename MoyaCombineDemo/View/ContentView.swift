@@ -6,16 +6,7 @@
 //
 
 import SwiftUI
-import Combine
-import CombineMoya
-import Moya
-import KeychainAccess
-import CryptoSwift
-import JWTDecode
-import SwiftyRSA
-import Kingfisher
 import ActivityIndicatorView
-import SPAlert
 
 struct ContentView: View {
   @StateObject var viewModel = ContentViewModel()
@@ -23,7 +14,7 @@ struct ContentView: View {
   @AppStorage("isLoggedIn") var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "isLoggedIn")
 
   var body: some View {
-    ZStack {
+    BaseView {
       if isLoggedIn {
         HomeView()
       } else {

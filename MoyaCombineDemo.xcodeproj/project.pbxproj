@@ -47,6 +47,7 @@
 		2E6D983D26D6103400380024 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D983B26D6103400380024 /* LogInView.swift */; };
 		2E6D98D226D8B5C600380024 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D126D8B5C600380024 /* BaseViewModel.swift */; };
 		2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D326D8B67C00380024 /* ContentViewModel.swift */; };
+		2E6D98D626D8B8DA00380024 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D526D8B8DA00380024 /* BaseView.swift */; };
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		2E6D983B26D6103400380024 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		2E6D98D126D8B5C600380024 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		2E6D98D326D8B67C00380024 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		2E6D98D526D8B8DA00380024 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,9 +137,9 @@
 		2E466E8A26D378E80059C7D8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2E6D98D126D8B5C600380024 /* BaseViewModel.swift */,
 				2E6D983726D60FE700380024 /* HomeViewModel.swift */,
 				2E6D983626D60FE700380024 /* LogInViewModel.swift */,
-				2E6D98D126D8B5C600380024 /* BaseViewModel.swift */,
 				2E6D98D326D8B67C00380024 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
@@ -157,7 +159,7 @@
 		2E466E8C26D379070059C7D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */,
+				2E6D98D726D8BBC300380024 /* Common */,
 				2E68327A26C62F3200B7B3F9 /* ContentView.swift */,
 				2E6D983A26D6103400380024 /* HomeView.swift */,
 				2E6D983B26D6103400380024 /* LogInView.swift */,
@@ -270,6 +272,15 @@
 				2E88872926D49F3000CFC554 /* LocalNotification.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2E6D98D726D8BBC300380024 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */,
+				2E6D98D526D8B8DA00380024 /* BaseView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8B367466E0ECD6B0ED9AA2B8 /* Pods */ = {
@@ -464,6 +475,7 @@
 				2E466E9426D39C1F0059C7D8 /* UserRespData.swift in Sources */,
 				2E6D983826D60FE700380024 /* LogInViewModel.swift in Sources */,
 				2E466E8126D341E90059C7D8 /* Utils.swift in Sources */,
+				2E6D98D626D8B8DA00380024 /* BaseView.swift in Sources */,
 				2E6D983D26D6103400380024 /* LogInView.swift in Sources */,
 				2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */,
 			);

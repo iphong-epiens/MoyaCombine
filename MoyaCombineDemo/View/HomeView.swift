@@ -6,13 +6,6 @@
 //
 
 import SwiftUI
-import Combine
-import CombineMoya
-import Moya
-import KeychainAccess
-import CryptoSwift
-import JWTDecode
-import SwiftyRSA
 import Kingfisher
 import ActivityIndicatorView
 import SPAlert
@@ -28,9 +21,7 @@ struct HomeView: View {
   }
 
   var body: some View {
-    ZStack {
-      Color.gray.ignoresSafeArea()
-
+    BaseView {
       VStack(spacing: 20) {
         Button("회원 정보") {
           viewModel.fetchUserData()
