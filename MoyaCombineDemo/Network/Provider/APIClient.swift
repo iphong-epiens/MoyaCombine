@@ -58,10 +58,10 @@ public class API: ObservableObject {
       //업데이트 날짜가 현재 날짜보다 미래인지 체크
       let interval = updateDate.timeIntervalSince1970 - Date().timeIntervalSince1970
 
-      let daysInterval = floor(interval/86400)
-      print("refresh token next update remains of", Int(daysInterval), "day")
+      let daysInterval = Int(floor(interval/86400))
+      print("refresh token next update remains of", daysInterval, "day")
 
-      return interval > 0 ? true : false
+      return daysInterval > 0 ? true : false
     }
 
     init(provider: MoyaProvider<MultiTarget>) {
@@ -132,6 +132,7 @@ extension API.NetworkClient {
     let target = MultiTarget(request)
 
     return self.provider.requestPublisher(target)
+      .retry(3)
       .subscribe(on: DispatchQueue.global(qos: .background))
       .receive(on: DispatchQueue.global(qos: .background))
       .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
@@ -148,7 +149,6 @@ extension API.NetworkClient {
         print(response.statusCode)
       }, receiveCompletion: { completion in
         print(completion)
-        API.shared.updateRefreshToken()
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
@@ -163,24 +163,6 @@ extension API.NetworkClient {
     let sender = NetworkInfoNotificationSender(msg)
     NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
   }
-
-  // MARK: - requestErrorHandler
-  //  func requestErrorHandler(_ error: SwsApiError, target: MultiTarget) {
-  //    print(">>> SwsApiError", error)
-  //    switch error {
-  //    case .refreshTokenError:
-  //      print("refreshTokenError")
-  //      self.changeRefreshToken(target: target)
-  //
-  //    case .accessTokenError:
-  //      print("accessTokenError")
-  //      self.fetchAccessToken(target: target)
-  //
-  //    case .publicKeyError:
-  //      print("publicKeyError")
-  //      self.changePublicKey(target: target)
-  //    }
-  //  }
 
   // MARK: - fetchAccessToken
   func fetchAccessToken(target: MultiTarget) -> AnyPublisher<Moya.Response, Error> {
@@ -245,10 +227,7 @@ extension API.NetworkClient {
 
   // MARK: - updateRefreshToken
 
-  func updateRefreshToken() {
-    guard let refreshToken = try? KeyChain.getString("refreshToken"),
-          !API.shared.tokenIsValid else { return }
-
+  func updateRefreshToken(_ refreshToken: String) {
     var cancellables = Set<AnyCancellable>()
 
     API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
