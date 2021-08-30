@@ -42,9 +42,9 @@ struct HomeView: View {
               .placeholder({
                 Image(uiImage: UIImage(named: "profile")!).resizable()
               })
-              .onProgress { receivedSize, totalSize in  print(receivedSize, totalSize)}
-              .onSuccess { result in print("img success", result) }
-              .onFailure { error in  print("img failure", error.localizedDescription)}
+              //              .onProgress { receivedSize, totalSize in  print(receivedSize, totalSize)}
+              .onSuccess { result in print("profile img download success", result) }
+              //              .onFailure { error in  print("img failure", error.localizedDescription)}
               .aspectRatio(contentMode: .fit)
               .frame(width: 100, height: 100)
               .clipShape(Circle())
