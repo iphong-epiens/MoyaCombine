@@ -290,8 +290,6 @@ extension API.NetworkClient {
             //save public key
             try KeyChain.set(publicKey, key: "publicKey")
             print("changed publicKey:", publicKey)
-
-            _ = self.request(target)
           }
         } catch let error {
           print(error.localizedDescription)
