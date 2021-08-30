@@ -256,7 +256,8 @@ extension API.NetworkClient {
           }
 
         case .finished:
-          break
+            // Refresh Token 갱신 후 public key도 추가로 갱신한다.
+            self.getPublicKey()
         }
       }, receiveValue: { response in
         do {
@@ -272,10 +273,6 @@ extension API.NetworkClient {
         } catch let error {
           print(error.localizedDescription)
         }
-
-        // Refresh Token 갱신 후 public key도 추가로 갱신한다.
-        self.getPublicKey()
-
       }).store(in: &cancellables)
   }
 
