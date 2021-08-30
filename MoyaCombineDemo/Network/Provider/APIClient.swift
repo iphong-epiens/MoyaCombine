@@ -149,6 +149,13 @@ extension API.NetworkClient {
         print(response.statusCode)
       }, receiveCompletion: { completion in
         print(completion)
+        
+        //update refresh token
+        guard UserDefaults.standard.bool(forKey: "isLoggedIn") == true,
+              let refreshToken = try? KeyChain.getString("refreshToken"),
+              !API.shared.tokenIsValid else { return }
+
+        API.shared.updateRefreshToken(refreshToken)
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
