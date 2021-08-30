@@ -132,23 +132,28 @@ extension API.NetworkClient {
     let target = MultiTarget(request)
 
     return self.provider.requestPublisher(target)
-      .retry(3)
       .subscribe(on: DispatchQueue.global(qos: .background))
       .receive(on: DispatchQueue.global(qos: .background))
       .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
         // 401 Error, update access token
-        guard let response = error.response,
-              let statusCode = HTTPStatusCode(rawValue: response.statusCode),
-              statusCode != .unauthorized else {
+        if let response = error.response,
+           let statusCode = HTTPStatusCode(rawValue: response.statusCode),
+           statusCode == .unauthorized {
           return self.fetchAccessToken(target: target)
+        } else {
+          throw error
         }
-
-        throw error
       })
       .handleEvents(receiveOutput: { response in
         print(response.statusCode)
       }, receiveCompletion: { completion in
         print(completion)
+        switch completion {
+        case .finished:
+          break
+        case .failure(let error):
+          self.networkPopup(error.localizedDescription)
+        }
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
