@@ -20,6 +20,12 @@ struct MoyaCombineApp: App {
 
   init() {
 
+    //update refresh token
+          guard UserDefaults.standard.bool(forKey: "isLoggedIn") == true,
+                let refreshToken = try? KeyChain.getString("refreshToken"),
+                !API.shared.tokenIsValid else { return }
+
+          API.shared.updateRefreshToken(refreshToken)
   }
 
   var body: some Scene {
