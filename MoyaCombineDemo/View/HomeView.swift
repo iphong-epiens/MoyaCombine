@@ -37,6 +37,13 @@ struct HomeView: View {
 
           if viewModel.profileImgUrl.count > 0 {
             KFImage(URL(string: viewModel.profileImgUrl)!)
+              .retry(maxCount: 2)
+              .onSuccess { result in
+                print("profileImgUrl success: \(result)")
+              }
+              .onFailure { error in
+                print("profileImgUrl failure: \(error.localizedDescription)")
+              }
               .resizable()
               .frame(width: 100, height: 100, alignment: .center)
               .cornerRadius(100/2)
