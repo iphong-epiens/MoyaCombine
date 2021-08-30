@@ -19,13 +19,7 @@ struct MoyaCombineApp: App {
   static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 
   init() {
-
-    //update refresh token
-    guard UserDefaults.standard.bool(forKey: "isLoggedIn") == true,
-          let refreshToken = try? KeyChain.getString("refreshToken"),
-          !API.shared.tokenIsValid else { return }
-
-    API.shared.updateRefreshToken(refreshToken)
+    configRefreshToken()
   }
 
   var body: some Scene {
@@ -71,5 +65,14 @@ struct MoyaCombineApp: App {
           }
         }
     }
+  }
+
+  func configRefreshToken() {
+    //update refresh token
+    guard UserDefaults.standard.bool(forKey: "isLoggedIn") == true,
+          let refreshToken = try? KeyChain.getString("refreshToken"),
+          !API.shared.tokenIsValid else { return }
+
+    API.shared.updateRefreshToken(refreshToken)
   }
 }
