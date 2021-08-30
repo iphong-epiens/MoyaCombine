@@ -13,6 +13,10 @@ struct ContentView: View {
   @EnvironmentObject private var settings: AppSettings
   @AppStorage("isLoggedIn") var isLoggedIn: Bool = UserDefaults.standard.bool(forKey: "isLoggedIn")
 
+  init() {
+    configRefreshToken()
+  }
+
   var body: some View {
     BaseView {
       if isLoggedIn {
@@ -26,6 +30,15 @@ struct ContentView: View {
         .foregroundColor(.black)
     }
     .popupView(draw: $viewModel.networkPopup, title: $viewModel.networkMsg)
+  }
+
+  func configRefreshToken() {
+    //update refresh token
+    guard UserDefaults.standard.bool(forKey: "isLoggedIn") == true,
+          let refreshToken = try? KeyChain.getString("refreshToken"),
+          !API.shared.tokenIsValid else { return }
+
+    API.shared.updateRefreshToken(refreshToken)
   }
 }
 
