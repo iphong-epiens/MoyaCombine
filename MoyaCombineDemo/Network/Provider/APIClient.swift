@@ -24,15 +24,8 @@ enum SwsApiError: Error {
   case publicKeyError
 }
 
-struct ResultCodeError: Error {
-  static func with(domain: String, code: Int = 0, localizedDescription: String) -> Error {
-    return NSError(domain: domain, code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription]) as Error
-  }
-}
-
 public class API: ObservableObject {
-  public var target: MultiTarget?
-  let tokenUpdateIntervalDay = 3
+
   public struct NetworkClient {
     public var token: String? // We should persist this value
 
@@ -83,6 +76,9 @@ public class API: ObservableObject {
   /// Default api client
   // static -> lazy하게 생성 // let -> thread-safe 보장
   static let shared: NetworkClient = {
+
+    //plugIn Config
+
     let networkClosure = {(_ change: NetworkActivityChangeType, _ target: TargetType) in
       DispatchQueue.main.async {
 
@@ -95,15 +91,6 @@ public class API: ObservableObject {
       }
     }
 
-    var configuration: URLSessionConfiguration {
-      let config = URLSessionConfiguration.default
-      config.timeoutIntervalForRequest = 5
-      config.timeoutIntervalForResource = 5
-      config.requestCachePolicy = .useProtocolCachePolicy
-      return config
-    }
-
-    let sessionConfig = Session(configuration: configuration, startRequestsImmediately: false)
     let logOptions: NetworkLoggerPlugin.Configuration = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
 
     let plugIn: [PluginType] = [NetworkLoggerPlugin(configuration: logOptions), NetworkActivityPlugin(networkActivityClosure: networkClosure), AccessTokenPlugin(tokenClosure: { _ in
@@ -116,7 +103,18 @@ public class API: ObservableObject {
       return accessToken
     })]
 
-    let provider = MoyaProvider<MultiTarget>(plugins: plugIn)
+    // Session Config
+    var configuration: URLSessionConfiguration {
+      let config = URLSessionConfiguration.default
+      config.timeoutIntervalForRequest = 5
+      config.timeoutIntervalForResource = 5
+      config.requestCachePolicy = .useProtocolCachePolicy
+      return config
+    }
+
+    let sessionConfig = Session(configuration: configuration, startRequestsImmediately: false)
+
+    let provider = MoyaProvider<MultiTarget>(session: sessionConfig, plugins: plugIn)
     let client = NetworkClient(provider: provider)
 
     return client
