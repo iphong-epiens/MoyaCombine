@@ -179,7 +179,7 @@ extension API.NetworkClient {
         return $0
       })
       .tryCatch({ error -> AnyPublisher<Moya.Response, Error> in
-        if let error = error as? SwsApiError, error == SwsApiError.refreshTokenError {
+        if let error = error as? SwsApiError, error == SwsApiError.accessTokenError {
           throw SwsApiError.accessTokenError
         } else {
           throw error
