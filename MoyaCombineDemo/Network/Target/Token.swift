@@ -16,6 +16,7 @@ extension ReqAPI {
     struct accessToken: ReqType {
       var refreshToken: String
 
+      //bearer에 access token이 아니라 refresh token을 넣기 때문에, none으로 처리함.
       var authorizationType: AuthorizationType? {
         return .none
       }
