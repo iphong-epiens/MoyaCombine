@@ -50,6 +50,7 @@
 		2E6D98D626D8B8DA00380024 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D526D8B8DA00380024 /* BaseView.swift */; };
 		2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98F326D8CBE200380024 /* BasePopupView.swift */; };
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
+		2EFF9D8126DF42020081AD6A /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D8026DF42020081AD6A /* BaseProvider.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		2E6D98D526D8B8DA00380024 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2E6D98F326D8CBE200380024 /* BasePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupView.swift; sourceTree = "<group>"; };
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		2EFF9D8026DF42020081AD6A /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaCombineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
+				2EFF9D8026DF42020081AD6A /* BaseProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
 				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
 				2E466E9026D385C60059C7D8 /* ActivityIndicator.swift in Sources */,
+				2EFF9D8126DF42020081AD6A /* BaseProvider.swift in Sources */,
 				2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */,
 				2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */,
 				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
