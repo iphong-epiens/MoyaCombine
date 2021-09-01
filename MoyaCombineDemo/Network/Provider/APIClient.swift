@@ -82,9 +82,9 @@ public class API: ObservableObject {
 
         switch change {
         case .began:
-          API.shared.networkLoading(true)
+          Utils.shared.networkLoading(true)
         case .ended:
-          API.shared.networkLoading(false)
+          Utils.shared.networkLoading(false)
         }
       }
     }
@@ -148,23 +148,15 @@ extension API.NetworkClient {
         case .finished:
           break
         case .failure(let error):
-          self.networkPopup(error.localizedDescription)
+          Utils.shared.networkPopup(error.localizedDescription)
         }
       })
       .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
+}
 
-  func networkLoading(_ loading: Bool) {
-    let sender = NetworkLoadingNotificationSender(loading)
-    NotificationCenter.default.post(name: NetworkLoadingNotificationSender.notification, object: sender)
-  }
-
-  func networkPopup(_ msg: String) {
-    let sender = NetworkInfoNotificationSender(msg)
-    NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
-  }
-
+extension API.NetworkClient {
   // MARK: - fetchAccessToken
   func fetchAccessToken(target: MultiTarget) -> AnyPublisher<Moya.Response, Error> {
     API.shared.request(ReqAPI.Token.accessToken(Utils.shared.refreshToken ?? ""))
@@ -205,7 +197,7 @@ extension API.NetworkClient {
                 // go login menu
                 UserDefaults.standard.setValue(false, forKey: "isLoggedIn")
 
-                API.shared.networkPopup("refresh token error")
+                Utils.shared.networkPopup("refresh token error")
               } catch let error {
                 print("error: \(error)")
               }
@@ -241,7 +233,7 @@ extension API.NetworkClient {
             try KeyChain.remove("accessToken")
             try KeyChain.remove("refreshToken")
 
-            API.shared.networkPopup("refresh token error")
+            Utils.shared.networkPopup("refresh token error")
 
             // go login menu
             UserDefaults.standard.setValue(false, forKey: "isLoggedIn")

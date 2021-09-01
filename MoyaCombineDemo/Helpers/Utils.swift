@@ -64,6 +64,16 @@ class Utils {
       return nil
     }
   }
+
+  func networkLoading(_ loading: Bool) {
+    let sender = NetworkLoadingNotificationSender(loading)
+    NotificationCenter.default.post(name: NetworkLoadingNotificationSender.notification, object: sender)
+  }
+
+  func networkPopup(_ msg: String) {
+    let sender = NetworkInfoNotificationSender(msg)
+    NotificationCenter.default.post(name: NetworkInfoNotificationSender.notification, object: sender)
+  }
 }
 
 //extension Utils {
