@@ -75,44 +75,49 @@ public class API: ObservableObject {
   // static -> lazy하게 생성 // let -> thread-safe 보장
   static let shared: NetworkClient = {
 
-    //plugIn Config
+    /// PlugIn Config
+    var plugInConfig: [PluginType] {
+      /// NetworkActivityPlugin
+      let networkClosure = {(_ change: NetworkActivityChangeType, _ target: TargetType) in
+        DispatchQueue.main.async {
 
-    let networkClosure = {(_ change: NetworkActivityChangeType, _ target: TargetType) in
-      DispatchQueue.main.async {
-
-        switch change {
-        case .began:
-          Utils.shared.networkLoading(true)
-        case .ended:
-          Utils.shared.networkLoading(false)
+          switch change {
+          case .began:
+            Utils.shared.networkLoading(true)
+          case .ended:
+            Utils.shared.networkLoading(false)
+          }
         }
       }
+
+      /// NetworkLoggerPlugin
+      let logOptions: NetworkLoggerPlugin.Configuration = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
+
+      return [NetworkLoggerPlugin(configuration: logOptions), NetworkActivityPlugin(networkActivityClosure: networkClosure), AccessTokenPlugin(tokenClosure: { _ in
+        var accessToken: String {
+          guard let token = try? KeyChain.getString("accessToken") else { return "" }
+          print("saved Token", token)
+          return token
+        }
+
+        return accessToken
+      })]
     }
 
-    let logOptions: NetworkLoggerPlugin.Configuration = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
-
-    let plugIn: [PluginType] = [NetworkLoggerPlugin(configuration: logOptions), NetworkActivityPlugin(networkActivityClosure: networkClosure), AccessTokenPlugin(tokenClosure: { _ in
-      var accessToken: String {
-        guard let token = try? KeyChain.getString("accessToken") else { return "" }
-        print("saved Token", token)
-        return token
+    /// Session Config
+    var sessionConfig: Session {
+      var configuration: URLSessionConfiguration {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 5
+        config.timeoutIntervalForResource = 5
+        config.requestCachePolicy = .useProtocolCachePolicy
+        return config
       }
-
-      return accessToken
-    })]
-
-    // Session Config
-    var configuration: URLSessionConfiguration {
-      let config = URLSessionConfiguration.default
-      config.timeoutIntervalForRequest = 5
-      config.timeoutIntervalForResource = 5
-      config.requestCachePolicy = .useProtocolCachePolicy
-      return config
+      return Session(configuration: configuration, startRequestsImmediately: false)
     }
 
-    let sessionConfig = Session(configuration: configuration, startRequestsImmediately: false)
+    let provider = MoyaProvider<MultiTarget>(stubClosure: Utils.shared.isNetworkStub ? MoyaProvider.immediatelyStub : MoyaProvider.neverStub, session: sessionConfig, plugins: plugInConfig)
 
-    let provider = MoyaProvider<MultiTarget>(session: sessionConfig, plugins: plugIn)
     let client = NetworkClient(provider: provider)
 
     return client
