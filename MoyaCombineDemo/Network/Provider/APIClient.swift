@@ -232,6 +232,8 @@ extension API.NetworkClient {
     var cancellables = Set<AnyCancellable>()
 
     API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
+      .map { $0.data }
+      .decode(type: RefreshTokenRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in
         switch completion {
         case .failure(let error):
@@ -254,16 +256,13 @@ extension API.NetworkClient {
           self.fetchPublicKey()
         }
       }, receiveValue: { response in
+        let resultData = response.jsonData
         do {
-          if let resultData = try? response.map(RefreshTokenRespData.self) {
-            print(">>> fetchRefreshToken resultData", resultData)
+          try KeyChain.set(resultData.accessToken, key: "accessToken")
+          try KeyChain.set(resultData.refreshToken, key: "refreshToken")
+          try KeyChain.set("\(resultData.authSysId)", key: "authSysId")
 
-            try KeyChain.set(resultData.jsonData.accessToken, key: "accessToken")
-            try KeyChain.set(resultData.jsonData.refreshToken, key: "refreshToken")
-            try KeyChain.set("\(resultData.jsonData.authSysId)", key: "authSysId")
-
-            print("changed refreshToken:", resultData.jsonData.refreshToken, "changed accessToken:", resultData.jsonData.accessToken, "authSysId", resultData.jsonData.authSysId)
-          }
+          print("changed refreshToken:", resultData.refreshToken, "changed accessToken:", resultData.accessToken, "authSysId", resultData.authSysId)
         } catch let error {
           print(error.localizedDescription)
         }
@@ -276,21 +275,14 @@ extension API.NetworkClient {
     var cancellables = Set<AnyCancellable>()
 
     API.shared.request(ReqAPI.Auth.publickey())
-      .print()
+      .map { $0.data }
+      .decode(type: PublicKeyRespData.self, decoder: JSONDecoder())
       .sink(receiveCompletion: { completion in
         print(completion)
       }, receiveValue: { response in
         do {
-          let json = try response.mapJSON()
-          if let object = json as? [String: Any],
-             let resultData = object["jsonData"],
-             let jsonData = resultData as? [String: Any],
-             let res = jsonData["res"]  as? [String: Any],
-             let publicKey = res["publicKey"] as? String {
-            //save public key
-            try KeyChain.set(publicKey, key: "publicKey")
-            print("new publicKey:", publicKey)
-          }
+          try KeyChain.set(response.jsonData.res.publicKey, key: "publicKey")
+          print("new publicKey:", response.jsonData.res.publicKey)
         } catch let error {
           print(error.localizedDescription)
         }
