@@ -32,7 +32,6 @@ public class API: ObservableObject {
     var cancellables = Set<AnyCancellable>()
 
     var lastTokenDate: Date?
-    var cache = [String: Any]()
 
     public var tokenIsValid: Bool {
       //        if !Settings.shared.getBool(.didLogin) { return false }
@@ -57,6 +56,7 @@ public class API: ObservableObject {
 
     init(provider: MoyaProvider<MultiTarget>) {
       self.provider = provider
+
       do {
         if let refreshToken = try KeyChain.getString("refreshToken") {
           print("saved refresh token", refreshToken)
@@ -116,7 +116,10 @@ public class API: ObservableObject {
       return Session(configuration: configuration, startRequestsImmediately: false)
     }
 
-    let provider = MoyaProvider<MultiTarget>(stubClosure: Utils.shared.isNetworkStub ? MoyaProvider.immediatelyStub : MoyaProvider.neverStub, session: sessionConfig, plugins: plugInConfig)
+    let provider = MoyaProvider<MultiTarget>(
+      stubClosure: Utils.shared.isNetworkStub ? MoyaProvider.immediatelyStub : MoyaProvider.neverStub,
+      session: sessionConfig,
+      plugins: plugInConfig)
 
     let client = NetworkClient(provider: provider)
 
