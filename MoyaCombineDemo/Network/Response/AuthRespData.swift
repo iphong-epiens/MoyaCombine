@@ -229,3 +229,22 @@ struct ChkRsaRespData: Codable {
     case jsonData
   }
 }
+
+struct PublicKeyRespData: Codable {
+  let jsonData: PublicKeyResultData
+
+  private enum CodingKeys: String, CodingKey {
+    case jsonData
+  }
+}
+
+struct PublicKeyResultData: RespDataType {
+  var code: Int
+  var resultCode: String
+  var resultMsg: String?
+  var res: PublicKeyData
+}
+
+struct PublicKeyData: Codable {
+  let publicKey: String
+}
