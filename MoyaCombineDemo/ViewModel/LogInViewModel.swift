@@ -14,7 +14,7 @@ class LogInViewModel: BaseViewModel {
   @Published var profileImgUrl: String = ""
 
   func normalUserLogin(userId: String, password: String) {
-    guard let pwdEncodeStr = API.shared.encryptRsaString(password) else { return }
+    guard let pwdEncodeStr = Utils.shared.encryptRsaString(password) else { return }
 
     let authLoginData = LoginReqData(userId: userId, password: pwdEncodeStr)
     let jsonEncodeData = try? Utils.encoder.encode(authLoginData)
@@ -43,7 +43,7 @@ class LogInViewModel: BaseViewModel {
           UserDefaults.standard.setValue(true, forKey: "isLoggedIn")
 
           //로그인 후 퍼블릭 키 갱신
-          API.shared.getPublicKey()
+          API.shared.fetchPublicKey()
 
         } catch let error {
           print(error.localizedDescription)

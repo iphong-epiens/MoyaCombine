@@ -73,6 +73,6 @@ struct MoyaCombineApp: App {
           let refreshToken = try? KeyChain.getString("refreshToken"),
           !API.shared.tokenIsValid else { return }
 
-    API.shared.updateRefreshToken(refreshToken)
+    API.shared.fetchRefreshToken(refreshToken)
   }
 }

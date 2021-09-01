@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import KeychainAccess
+import JWTDecode
+import SwiftyRSA
 
 class Utils {
   static let shared = Utils()
+
+  var isNetworkStub: Bool = false
 
   var userSysId: String!
 
@@ -40,6 +45,25 @@ class Utils {
     return decoder
   }
 
+  // encrypt with public key
+  // MARK: - encryptRsaString
+  func encryptRsaString(_ encodeStr: String) -> String? {
+    do {
+      let publickeyStr = try KeyChain.getString("publicKey")
+      guard let publickey = publickeyStr else { return nil }
+
+      let publicKey = try PublicKey(base64Encoded: publickey)
+
+      let clear = try ClearMessage(string: encodeStr, using: .utf8)
+      let encrypted = try clear.encrypted(with: publicKey, padding: .PKCS1)
+      let encrptedStr = Optional(encrypted.base64String)
+
+      return encrptedStr
+    } catch {
+      print(error)
+      return nil
+    }
+  }
 }
 
 //extension Utils {

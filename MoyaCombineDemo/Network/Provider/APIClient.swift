@@ -9,9 +9,7 @@ import Foundation
 import Moya
 import RxSwift
 import KeychainAccess
-
 import JWTDecode
-import KeychainAccess
 import SwiftyRSA
 import Alamofire
 import Combine
@@ -228,9 +226,9 @@ extension API.NetworkClient {
       .eraseToAnyPublisher()
   }
 
-  // MARK: - updateRefreshToken
+  // MARK: - fetchRefreshToken
 
-  func updateRefreshToken(_ refreshToken: String) {
+  func fetchRefreshToken(_ refreshToken: String) {
     var cancellables = Set<AnyCancellable>()
 
     API.shared.request(ReqAPI.Token.refreshToken(refreshToken))
@@ -253,12 +251,12 @@ extension API.NetworkClient {
 
         case .finished:
           // Refresh Token 갱신 후 public key도 추가로 갱신한다.
-          self.getPublicKey()
+          self.fetchPublicKey()
         }
       }, receiveValue: { response in
         do {
           if let resultData = try? response.map(RefreshTokenRespData.self) {
-            print(">>> updateRefreshToken resultData", resultData)
+            print(">>> fetchRefreshToken resultData", resultData)
 
             try KeyChain.set(resultData.jsonData.accessToken, key: "accessToken")
             try KeyChain.set(resultData.jsonData.refreshToken, key: "refreshToken")
@@ -272,37 +270,9 @@ extension API.NetworkClient {
       }).store(in: &cancellables)
   }
 
-  // MARK: - changePublicKey
+  // MARK: - fetchPublicKey
 
-  func changePublicKey(target: MultiTarget) {
-    //Change Public Key
-    var cancellables = Set<AnyCancellable>()
-
-    API.shared.request(ReqAPI.Auth.publickey())
-      .print()
-      .sink(receiveCompletion: { completion in
-        print(completion)
-      }, receiveValue: { response in
-        do {
-          let json = try response.mapJSON()
-          if let object = json as? [String: Any],
-             let resultData = object["jsonData"],
-             let jsonData = resultData as? [String: Any],
-             let res = jsonData["res"]  as? [String: Any],
-             let publicKey = res["publicKey"] as? String {
-            //save public key
-            try KeyChain.set(publicKey, key: "publicKey")
-            print("changed publicKey:", publicKey)
-          }
-        } catch let error {
-          print(error.localizedDescription)
-        }
-      }).store(in: &cancellables)
-  }
-
-  // MARK: - getPublicKey
-
-  func getPublicKey() {
+  func fetchPublicKey() {
     var cancellables = Set<AnyCancellable>()
 
     API.shared.request(ReqAPI.Auth.publickey())
@@ -351,25 +321,5 @@ extension API.NetworkClient {
         print(response.jsonData.res.rsaDecStr)
       })
       .store(in: &cancellables)
-  }
-
-  // encrypt with public key
-  // MARK: - encryptRsaString
-  func encryptRsaString(_ encodeStr: String) -> String? {
-    do {
-      let publickeyStr = try KeyChain.getString("publicKey")
-      guard let publickey = publickeyStr else { return nil }
-
-      let publicKey = try PublicKey(base64Encoded: publickey)
-
-      let clear = try ClearMessage(string: encodeStr, using: .utf8)
-      let encrypted = try clear.encrypted(with: publicKey, padding: .PKCS1)
-      let encrptedStr = Optional(encrypted.base64String)
-
-      return encrptedStr
-    } catch {
-      print(error)
-      return nil
-    }
   }
 }
