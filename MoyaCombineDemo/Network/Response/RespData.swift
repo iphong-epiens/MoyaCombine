@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol RespDataType: Codable {
+protocol ResultDataType: Codable {
   var code: Int { get }
   var resultCode: String { get }
   var resultMsg: String? { get }
 }
 
-struct ResultData: RespDataType {
+struct ResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -26,10 +26,7 @@ struct ResultData: RespDataType {
   }
 }
 
-struct RespData: Codable {
-  let jsonData: ResultData
-
-  private enum CodingKeys: String, CodingKey {
-    case jsonData
-  }
+protocol RespDataType: Codable {
+  associatedtype ResultData
+  var jsonData: ResultData { get }
 }

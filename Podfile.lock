@@ -2,6 +2,7 @@ PODS:
   - ActivityIndicatorView (0.0.7)
   - JWTDecode (2.6.2)
   - KeychainAccess (4.2.2)
+  - Kingfisher (6.3.1)
   - SPAlert (3.3.1)
   - SwiftDate (6.3.1)
   - SwiftLint (0.43.1)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - ActivityIndicatorView
   - JWTDecode
   - KeychainAccess
+  - Kingfisher
   - SPAlert
   - SwiftDate
   - SwiftLint
@@ -23,6 +25,7 @@ SPEC REPOS:
     - ActivityIndicatorView
     - JWTDecode
     - KeychainAccess
+    - Kingfisher
     - SPAlert
     - SwiftDate
     - SwiftLint
@@ -32,11 +35,12 @@ SPEC CHECKSUMS:
   ActivityIndicatorView: 38c6cc1668e667f0fe0896a0c6ca2315c667ee8f
   JWTDecode: 2cc56f950540c95fd11b14ff6388f7c6cb9760ab
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   SPAlert: 7028b585168153d9619192d4debe060b25071b0f
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
 
-PODFILE CHECKSUM: e8539dc2409a6b00ee560d08ac037d9f023bee56
+PODFILE CHECKSUM: de3e9827735343f447dbbb9ce8535c3b4733a265
 
 COCOAPODS: 1.10.1

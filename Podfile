@@ -16,4 +16,6 @@ target 'MoyaCombineDemo' do
   pod 'SPAlert'
 
   pod 'SwiftLint'
+  
+  pod 'Kingfisher'
 end

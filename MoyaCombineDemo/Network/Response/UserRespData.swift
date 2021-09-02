@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CheckDuplicateIdRespData: RespDataType {
+struct CheckDuplicateIdRespData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -20,7 +20,7 @@ struct CheckDuplicateIdRespData: RespDataType {
   }
 }
 
-struct MyInfoResultData: RespDataType {
+struct MyInfoResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -58,7 +58,7 @@ struct MyInfoRespData: Codable {
   }
 }
 
-struct UserInfoResultData: RespDataType {
+struct UserInfoResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -138,7 +138,7 @@ struct UserInfoRespData: Codable {
   }
 }
 
-struct ReviewInfoResultData: RespDataType {
+struct ReviewInfoResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var startIndex: Int?

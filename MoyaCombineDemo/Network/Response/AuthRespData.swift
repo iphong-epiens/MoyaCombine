@@ -32,7 +32,7 @@ struct AuthInfoData: Codable {
   }
 }
 
-struct AuthResultData: RespDataType {
+struct AuthResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -54,7 +54,7 @@ struct AuthRespData: Codable {
   }
 }
 
-struct LoginResultData: RespDataType {
+struct LoginResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -88,7 +88,7 @@ protocol AdminLoginInfoable {
   var gradeSysId: Int? { get }
 }
 
-struct AdminLoginResultData: RespDataType, AdminLoginInfoable {
+struct AdminLoginResultData: ResultDataType, AdminLoginInfoable {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -124,7 +124,7 @@ struct AdminLoginRespData: Codable {
   }
 }
 
-struct SnsLoginResultData: RespDataType {
+struct SnsLoginResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -154,7 +154,7 @@ struct SnsLoginRespData: Codable {
   }
 }
 
-struct AccessTokenResultData: RespDataType {
+struct AccessTokenResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -178,7 +178,7 @@ struct AccessTokenRespData: Codable {
   }
 }
 
-struct RefreshTokenResultData: RespDataType {
+struct RefreshTokenResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -204,7 +204,7 @@ struct RefreshTokenRespData: Codable {
   }
 }
 
-struct ChkRsaResultData: RespDataType {
+struct ChkRsaResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
@@ -230,15 +230,12 @@ struct ChkRsaRespData: Codable {
   }
 }
 
-struct PublicKeyRespData: Codable {
-  let jsonData: PublicKeyResultData
-
-  private enum CodingKeys: String, CodingKey {
-    case jsonData
-  }
+struct PublicKeyRespData: RespDataType {
+  typealias ResultData = PublicKeyResultData
+  var jsonData: PublicKeyResultData
 }
 
-struct PublicKeyResultData: RespDataType {
+struct PublicKeyResultData: ResultDataType {
   var code: Int
   var resultCode: String
   var resultMsg: String?
