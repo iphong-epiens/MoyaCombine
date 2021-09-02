@@ -76,6 +76,12 @@ class NetworkManager {
 }
 
 extension NetworkManager {
+  func requestDebug<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, MoyaError> {
+    let target = MultiTarget(request)
+    return self.provider.requestPublisher(target)
+      .eraseToAnyPublisher()
+  }
+
   func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, Error> {
     let target = MultiTarget(request)
 
