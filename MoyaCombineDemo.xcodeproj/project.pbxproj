@@ -52,8 +52,19 @@
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
 		2EFF9D8126DF42020081AD6A /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D8026DF42020081AD6A /* BaseProvider.swift */; };
 		2EFF9DA026E05EB80081AD6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */; };
+		2EFF9DD226E07B5A0081AD6A /* MoyaCombineDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2EFF9DD426E07B5A0081AD6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E68326D26C62F3200B7B3F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E68327426C62F3200B7B3F9;
+			remoteInfo = MoyaCombineDemo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2E466E7C26CFBC370059C7D8 /* RespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespData.swift; sourceTree = "<group>"; };
@@ -99,6 +110,9 @@
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		2EFF9D8026DF42020081AD6A /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
 		2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2EFF9DCF26E07B5A0081AD6A /* MoyaCombineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoyaCombineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineDemoTests.swift; sourceTree = "<group>"; };
+		2EFF9DD326E07B5A0081AD6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D52332CD4848313D9CF86D /* Pods-MoyaCombineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E159E0E2F73B8364098108CA /* Pods-MoyaCombineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoyaCombineDemo.release.xcconfig"; path = "Target Support Files/Pods-MoyaCombineDemo/Pods-MoyaCombineDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoyaCombineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +129,13 @@
 				2E68328926C6308300B7B3F9 /* ReactiveMoya in Frameworks */,
 				2E68329226C63F6400B7B3F9 /* Kingfisher in Frameworks */,
 				757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EFF9DCC26E07B5A0081AD6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				2E68327726C62F3200B7B3F9 /* MoyaCombineDemo */,
+				2EFF9DD026E07B5A0081AD6A /* MoyaCombineDemoTests */,
 				2E68327626C62F3200B7B3F9 /* Products */,
 				8B367466E0ECD6B0ED9AA2B8 /* Pods */,
 				F06378AD4261ECAAA6C76F4A /* Frameworks */,
@@ -209,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				2E68327526C62F3200B7B3F9 /* MoyaCombineDemo.app */,
+				2EFF9DCF26E07B5A0081AD6A /* MoyaCombineDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -292,6 +315,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		2EFF9DD026E07B5A0081AD6A /* MoyaCombineDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */,
+				2EFF9DD326E07B5A0081AD6A /* Info.plist */,
+			);
+			path = MoyaCombineDemoTests;
+			sourceTree = "<group>";
+		};
 		8B367466E0ECD6B0ED9AA2B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +371,24 @@
 			productReference = 2E68327526C62F3200B7B3F9 /* MoyaCombineDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2EFF9DCE26E07B5A0081AD6A /* MoyaCombineDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EFF9DD826E07B5A0081AD6A /* Build configuration list for PBXNativeTarget "MoyaCombineDemoTests" */;
+			buildPhases = (
+				2EFF9DCB26E07B5A0081AD6A /* Sources */,
+				2EFF9DCC26E07B5A0081AD6A /* Frameworks */,
+				2EFF9DCD26E07B5A0081AD6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2EFF9DD526E07B5A0081AD6A /* PBXTargetDependency */,
+			);
+			name = MoyaCombineDemoTests;
+			productName = MoyaCombineDemoTests;
+			productReference = 2EFF9DCF26E07B5A0081AD6A /* MoyaCombineDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -350,6 +400,10 @@
 				TargetAttributes = {
 					2E68327426C62F3200B7B3F9 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					2EFF9DCE26E07B5A0081AD6A = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 2E68327426C62F3200B7B3F9;
 					};
 				};
 			};
@@ -371,6 +425,7 @@
 			projectRoot = "";
 			targets = (
 				2E68327426C62F3200B7B3F9 /* MoyaCombineDemo */,
+				2EFF9DCE26E07B5A0081AD6A /* MoyaCombineDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -382,6 +437,13 @@
 			files = (
 				2E68328026C62F3300B7B3F9 /* Preview Assets.xcassets in Resources */,
 				2E68327D26C62F3300B7B3F9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EFF9DCD26E07B5A0081AD6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +555,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2EFF9DCB26E07B5A0081AD6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EFF9DD226E07B5A0081AD6A /* MoyaCombineDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2EFF9DD526E07B5A0081AD6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E68327426C62F3200B7B3F9 /* MoyaCombineDemo */;
+			targetProxy = 2EFF9DD426E07B5A0081AD6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2E68328226C62F3300B7B3F9 /* Debug */ = {
@@ -660,6 +738,46 @@
 			};
 			name = Release;
 		};
+		2EFF9DD626E07B5A0081AD6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UV36497CVB;
+				INFOPLIST_FILE = MoyaCombineDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.epiens.MoyaCombineDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoyaCombineDemo.app/MoyaCombineDemo";
+			};
+			name = Debug;
+		};
+		2EFF9DD726E07B5A0081AD6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UV36497CVB;
+				INFOPLIST_FILE = MoyaCombineDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.epiens.MoyaCombineDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoyaCombineDemo.app/MoyaCombineDemo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -677,6 +795,15 @@
 			buildConfigurations = (
 				2E68328526C62F3300B7B3F9 /* Debug */,
 				2E68328626C62F3300B7B3F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EFF9DD826E07B5A0081AD6A /* Build configuration list for PBXNativeTarget "MoyaCombineDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EFF9DD626E07B5A0081AD6A /* Debug */,
+				2EFF9DD726E07B5A0081AD6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
