@@ -28,6 +28,7 @@ class MoyaCombineDemoTests: XCTestCase {
 
   func testFetchPublicKey() {
     let expectation = XCTestExpectation()
+
     sut.requestDebug(ReqAPI.Auth.publickey(), type: PublicKeyResultData.self, atKeyPath: "jsonData")
       .map { $0.res.publicKey }
       .sink(receiveCompletion: { completion in

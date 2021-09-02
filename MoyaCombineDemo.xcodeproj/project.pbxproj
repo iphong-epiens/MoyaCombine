@@ -49,6 +49,10 @@
 		2E6D98D626D8B8DA00380024 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D526D8B8DA00380024 /* BaseView.swift */; };
 		2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98F326D8CBE200380024 /* BasePopupView.swift */; };
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
+		2EA6AF3A26E0A6B700D8D6C7 /* ProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6AF3926E0A6B700D8D6C7 /* ProviderProtocol.swift */; };
+		2EA6AF3C26E0A81B00D8D6C7 /* JokerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6AF3B26E0A81B00D8D6C7 /* JokerAPI.swift */; };
+		2EA6AF4526E0A86400D8D6C7 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6AF4426E0A86400D8D6C7 /* Joke.swift */; };
+		2EA6AF4726E0A87A00D8D6C7 /* JokesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6AF4626E0A87A00D8D6C7 /* JokesAPIProvider.swift */; };
 		2EFF9DA026E05EB80081AD6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */; };
 		2EFF9DD226E07B5A0081AD6A /* MoyaCombineDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
@@ -106,6 +110,10 @@
 		2E6D98D526D8B8DA00380024 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2E6D98F326D8CBE200380024 /* BasePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupView.swift; sourceTree = "<group>"; };
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		2EA6AF3926E0A6B700D8D6C7 /* ProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderProtocol.swift; sourceTree = "<group>"; };
+		2EA6AF3B26E0A81B00D8D6C7 /* JokerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokerAPI.swift; sourceTree = "<group>"; };
+		2EA6AF4426E0A86400D8D6C7 /* Joke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
+		2EA6AF4626E0A87A00D8D6C7 /* JokesAPIProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokesAPIProvider.swift; sourceTree = "<group>"; };
 		2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2EFF9DCF26E07B5A0081AD6A /* MoyaCombineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoyaCombineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineDemoTests.swift; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 			children = (
 				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
 				2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */,
+				2EA6AF4626E0A87A00D8D6C7 /* JokesAPIProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 				2E466E9726D39EAE0059C7D8 /* UserAPI.swift */,
 				2E6833EE26CA67B300B7B3F9 /* AuthAPI.swift */,
 				2E6833F026CA67CE00B7B3F9 /* Token.swift */,
+				2EA6AF3B26E0A81B00D8D6C7 /* JokerAPI.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -273,6 +283,7 @@
 		2E68329F26C6449300B7B3F9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				2EA6AF4326E0A85800D8D6C7 /* Model */,
 				2E466E9526D39DFC0059C7D8 /* Provider */,
 				2E466E9626D39E130059C7D8 /* Target */,
 				2E466E8826D373690059C7D8 /* Request */,
@@ -308,6 +319,15 @@
 				2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		2EA6AF4326E0A85800D8D6C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2EA6AF4426E0A86400D8D6C7 /* Joke.swift */,
+				2EA6AF3926E0A6B700D8D6C7 /* ProviderProtocol.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2EFF9DD026E07B5A0081AD6A /* MoyaCombineDemoTests */ = {
@@ -511,10 +531,13 @@
 				2E6832B526C67B6800B7B3F9 /* HTTPStatusCode.swift in Sources */,
 				2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */,
 				2E68327B26C62F3200B7B3F9 /* ContentView.swift in Sources */,
+				2EA6AF3A26E0A6B700D8D6C7 /* ProviderProtocol.swift in Sources */,
 				2E466E8E26D385BB0059C7D8 /* ColorExtension.swift in Sources */,
+				2EA6AF4526E0A86400D8D6C7 /* Joke.swift in Sources */,
 				2E6833F726CA724900B7B3F9 /* AppDelegate.swift in Sources */,
 				2E466E8326D342190059C7D8 /* AuthReqData.swift in Sources */,
 				2E6833E726CA5CB300B7B3F9 /* APIClient.swift in Sources */,
+				2EA6AF3C26E0A81B00D8D6C7 /* JokerAPI.swift in Sources */,
 				2E466E9226D39C120059C7D8 /* UserReqData.swift in Sources */,
 				2E466E8526D342480059C7D8 /* String+Extension.swift in Sources */,
 				2E6832B426C67B6800B7B3F9 /* ResultCode.swift in Sources */,
@@ -524,6 +547,7 @@
 				2E6D983926D60FE700380024 /* HomeViewModel.swift in Sources */,
 				2E6832A626C6454A00B7B3F9 /* FileManagerExtensions.swift in Sources */,
 				2E68329826C6448000B7B3F9 /* Dictionary+Ext.swift in Sources */,
+				2EA6AF4726E0A87A00D8D6C7 /* JokesAPIProvider.swift in Sources */,
 				2E6D983C26D6103400380024 /* HomeView.swift in Sources */,
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
 				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
