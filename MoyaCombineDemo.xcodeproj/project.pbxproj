@@ -49,7 +49,6 @@
 		2E6D98D626D8B8DA00380024 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98D526D8B8DA00380024 /* BaseView.swift */; };
 		2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D98F326D8CBE200380024 /* BasePopupView.swift */; };
 		2E88872A26D49F3000CFC554 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88872926D49F3000CFC554 /* LocalNotification.swift */; };
-		2EFF9D8126DF42020081AD6A /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D8026DF42020081AD6A /* BaseProvider.swift */; };
 		2EFF9DA026E05EB80081AD6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */; };
 		2EFF9DD226E07B5A0081AD6A /* MoyaCombineDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */; };
 		757143E68AEBCAF30A415899 /* Pods_MoyaCombineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B651CD26E9782D931D7E65 /* Pods_MoyaCombineDemo.framework */; };
@@ -107,7 +106,6 @@
 		2E6D98D526D8B8DA00380024 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		2E6D98F326D8CBE200380024 /* BasePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupView.swift; sourceTree = "<group>"; };
 		2E88872926D49F3000CFC554 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
-		2EFF9D8026DF42020081AD6A /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
 		2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2EFF9DCF26E07B5A0081AD6A /* MoyaCombineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoyaCombineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFF9DD126E07B5A0081AD6A /* MoyaCombineDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaCombineDemoTests.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 			children = (
 				2E6833E626CA5CB300B7B3F9 /* APIClient.swift */,
 				2EFF9D9F26E05EB80081AD6A /* NetworkManager.swift */,
-				2EFF9D8026DF42020081AD6A /* BaseProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -531,7 +528,6 @@
 				2E6833EB26CA676D00B7B3F9 /* RequestType.swift in Sources */,
 				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
 				2E466E9026D385C60059C7D8 /* ActivityIndicator.swift in Sources */,
-				2EFF9D8126DF42020081AD6A /* BaseProvider.swift in Sources */,
 				2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */,
 				2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */,
 				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,

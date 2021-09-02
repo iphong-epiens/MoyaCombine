@@ -76,13 +76,15 @@ class NetworkManager {
 }
 
 extension NetworkManager {
-  func requestDebug<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, MoyaError> {
+  func requestDebug<T: TargetType, D: Decodable>(_ request: T, type: D.Type, atKeyPath keyPath: String? = nil) -> AnyPublisher<D, MoyaError> {
     let target = MultiTarget(request)
+
     return self.provider.requestPublisher(target)
+      .map(type, atKeyPath: keyPath)
       .eraseToAnyPublisher()
   }
 
-  func request<Request: TargetType>(_ request: Request) -> AnyPublisher<Moya.Response, Error> {
+  func request<T: TargetType>(_ request: T) -> AnyPublisher<Moya.Response, Error> {
     let target = MultiTarget(request)
 
     return self.provider.requestPublisher(target)

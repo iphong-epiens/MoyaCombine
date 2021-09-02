@@ -31,7 +31,6 @@ struct LogInView: View {
         .foregroundColor(.black)
     }
     .popupView(draw: $viewModel.networkPopup, title: $viewModel.networkMsg)
-
   }
 }
 
