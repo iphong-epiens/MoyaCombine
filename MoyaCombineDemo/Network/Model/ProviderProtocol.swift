@@ -12,6 +12,11 @@ import RxSwift
 import RxMoya
 import CombineMoya
 
+/*
+ iOS Networking and Testing
+ https://techblog.woowahan.com/2704/
+ */
+
 public protocol ProviderProtocol: AnyObject {
   associatedtype T: TargetType
   var provider: MoyaProvider<T> { get }
