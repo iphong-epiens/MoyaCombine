@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E4549F726E8625200E23740 /* LoggerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4549F626E8625200E23740 /* LoggerView.swift */; };
 		2E466E7E26CFBC370059C7D8 /* RespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7C26CFBC370059C7D8 /* RespData.swift */; };
 		2E466E7F26CFBC370059C7D8 /* AuthRespData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */; };
 		2E466E8126D341E90059C7D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E466E8026D341E90059C7D8 /* Utils.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E4549F626E8625200E23740 /* LoggerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerView.swift; sourceTree = "<group>"; };
 		2E466E7C26CFBC370059C7D8 /* RespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RespData.swift; sourceTree = "<group>"; };
 		2E466E7D26CFBC370059C7D8 /* AuthRespData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRespData.swift; sourceTree = "<group>"; };
 		2E466E8026D341E90059C7D8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				2E6D98D526D8B8DA00380024 /* BaseView.swift */,
 				2E6D98F326D8CBE200380024 /* BasePopupView.swift */,
 				2E466E8F26D385C60059C7D8 /* ActivityIndicator.swift */,
+				2E4549F626E8625200E23740 /* LoggerView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				2E68341D26CF6E6D00B7B3F9 /* KeychainStorage.swift in Sources */,
 				2E466E9026D385C60059C7D8 /* ActivityIndicator.swift in Sources */,
 				2E6D98F426D8CBE200380024 /* BasePopupView.swift in Sources */,
+				2E4549F726E8625200E23740 /* LoggerView.swift in Sources */,
 				2E6D98D426D8B67C00380024 /* ContentViewModel.swift in Sources */,
 				2E6833F126CA67CE00B7B3F9 /* Token.swift in Sources */,
 				2E6833ED26CA677900B7B3F9 /* Config.swift in Sources */,

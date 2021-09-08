@@ -31,6 +31,7 @@ struct HomeView: View {
 
         HStack {
           if viewModel.userInfo.count > 0 {
+            LoggerView(viewModel.userInfo)
             Text(viewModel.userInfo)
               .fontWeight(.bold)
           }

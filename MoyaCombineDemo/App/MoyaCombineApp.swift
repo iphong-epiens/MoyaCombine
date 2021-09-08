@@ -18,18 +18,18 @@ struct MoyaCombineApp: App {
   @StateObject var settings: AppSettings = AppSettings()
   static let keychain = Keychain(service: Bundle.main.bundleIdentifier!).accessibility(.afterFirstUnlock)
 
-//  let provider = JokesAPIProvider()
-//  var cancellables = Set<AnyCancellable>()
+  //  let provider = JokesAPIProvider()
+  //  var cancellables = Set<AnyCancellable>()
 
   init() {
 
-//    provider.fetchRandomJoke(firstName: "Inpyo", lastName: "Hong", categories: ["nerdy"])
-//      .sink(receiveCompletion: { completion in
-//        print(completion)
-//      }, receiveValue: { result in
-//        print(result.joke)
-//      })
-//      .store(in: &cancellables)
+    //    provider.fetchRandomJoke(firstName: "Inpyo", lastName: "Hong", categories: ["nerdy"])
+    //      .sink(receiveCompletion: { completion in
+    //        print(completion)
+    //      }, receiveValue: { result in
+    //        print(result.joke)
+    //      })
+    //      .store(in: &cancellables)
 
     configRefreshToken()
   }

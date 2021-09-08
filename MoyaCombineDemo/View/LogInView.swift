@@ -23,7 +23,7 @@ struct LogInView: View {
       }
 
       if viewModel.userInfoError {
-        Text("userInfoError")
+        LoggerView("userInfoError")
       }
 
       ActivityIndicatorView(isVisible: $viewModel.networkLoading, type: .gradient([Color.gray, Color.black]))
